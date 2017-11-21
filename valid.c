@@ -4,8 +4,8 @@
 
 #include "cipher.h"
 
-byte keyCharlist[] = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz,-.:?_{}0123456789";
-int lenkeyCharList = 70;
+const byte keyCharlist[] = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz,-.:?_{}0123456789";
+const int lenkeyCharList = 70;
 bool ValidTextChar(byte text){
   if (
   //Espace , Majuscules, Minuscules
@@ -59,7 +59,7 @@ byte** keygen(int lenkey,int lentar, byte *tar){
   int nb_char;
   for (int i = 0; i < lenkey; i++) {
     nb_char = 0;
-    tab_key[i] = (byte*) calloc(1,lenkeyCharList*sizeof(byte));
+    tab_key[i] = (byte*) malloc((lenkeyCharList+1)*sizeof(byte));
     for (int j = 0; j < lenkeyCharList; j++) {
       if (IsKeyCharOk(tar, lentar, keyCharlist[j], i, lenkey)) {
         tab_key[i][nb_char] = keyCharlist[j];
@@ -69,4 +69,42 @@ byte** keygen(int lenkey,int lentar, byte *tar){
     tab_key[i][nb_char] = '\0';
   }
   return tab_key;
+}
+
+void libDoublePointeur(byte** pointeur, int lenPointeur) {
+  for (int i = 0; i < lenPointeur; i++) {
+    free(pointeur[i]);
+  }
+  free(pointeur);
+}
+
+byte** buildkey(int lenkey, int lentar, byte *tar,int* nb){
+  byte** tab_key = keygen(lenkey, lentar, tar);;
+  int nb_key = 1;
+  int nb_char[lenkey];
+  int diviseur[lenkey];
+  for (int i = 0; i < lenkey; i++) {
+    nb_char[i] = 0;
+    for (int j = 0; tab_key[i][j]!='\0'; j++) {
+      ++nb_char[i];
+    }
+    nb_key *= nb_char[i];
+  }
+  for (int i = 0; i < lenkey; i++) {
+    if (i==0) {
+      diviseur[0] = nb_key/nb_char[0];
+    } else {
+      diviseur[i] = diviseur[i-1]/nb_char[i];
+    }
+  }
+  *nb = nb_key;
+  byte** key = (byte**) malloc(nb_key*sizeof(byte*));
+  for (int i = 0; i < nb_key; i++) {
+    key[i] = (byte*) malloc(lenkey*sizeof(byte));
+    for (int j = 0; j < lenkey; j++) {
+      key[i][j] = tab_key[j][(i/diviseur[j])%nb_char[j]];
+    }
+  }
+  libDoublePointeur(tab_key, lenkey);
+  return key;
 }

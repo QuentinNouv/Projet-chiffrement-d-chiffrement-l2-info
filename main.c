@@ -8,14 +8,16 @@
 typedef unsigned char byte;
 
 int main(int argc, char const *argv[]) {
-  byte entree[] = "Bonjour je m'appelle bite !hebv dba cbe ?ndb cheyt";
+  byte entree[] = "Bonjour je m'appelle bite !";
   byte key[] = "mdr";
   printf("Key : %s\nEntree : '%s'\n", key, entree);
-  xorcipher(3, key, 50, entree);
+  xorcipher(3, key, 27, entree);
   printf("Après chiffrage : début'%s'fin\n", entree);
-  byte** test = keygen(3, 50, entree);
-  for (int i = 0; i < 3; i++) {
+  int nb;
+  byte** test = buildkey(3, 27, entree,&nb);
+  for (int i = 0; i < nb; i++) {
     printf("%s\n", test[i]);
   }
+  libDoublePointeur(test, 3);
   return 0;
 }
