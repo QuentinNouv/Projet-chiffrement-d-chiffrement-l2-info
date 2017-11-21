@@ -3,7 +3,7 @@ CFLAGS=-Wall
 OBJ=cipher.o valid.o main.o
 
 util:	$(OBJ)
-	$(CC) $(OBJ) $(CFLAGS) -o Projet_S3/xorcipher
+	$(CC) $(OBJ) $(CFLAGS) -o xorcipher
 
 cipher.o: cipher.c
 valid.o : valid.c
