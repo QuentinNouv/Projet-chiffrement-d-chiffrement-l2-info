@@ -8,7 +8,7 @@
 typedef unsigned char byte;
 
 int main(int argc, char const *argv[]) {
-  byte entree[] = "Bonjour je m'appelle bite !";
+  byte entree[] = "Bonjour je m'appelle bite !TEst gd ceg cq qzcgc qcg ?";
   byte key[] = "mdr";
   printf("Key : %s\nEntree : '%s'\n", key, entree);
   xorcipher(3, key, 27, entree);
