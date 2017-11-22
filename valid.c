@@ -43,7 +43,7 @@ bool ValidKeyChar(byte key){
   return false;
 }
 
-bool IsKeyCharOk(byte *tar, int lentar, byte keyChar, int indkey, int lenkey){
+bool IsKeyCharOk(const byte *tar, int lentar, byte keyChar, int indkey, int lenkey){
   byte temp;
   for (int i = indkey; i < lentar; i+=lenkey) {
     temp = tar[i] ^ keyChar;
@@ -52,6 +52,15 @@ bool IsKeyCharOk(byte *tar, int lentar, byte keyChar, int indkey, int lenkey){
     }
   }
   return true;
+}
+
+bool IskeyValid(byte* key, int lenkey){
+  int i = 0;
+  bool res = true;
+  while (i< lenkey && res){
+    res = ValidKeyChar(key[i++]);
+  }
+  return res;
 }
 
 byte** keygen(int lenkey,int lentar, byte *tar){
