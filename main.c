@@ -8,7 +8,7 @@
 #include "valid.h"
 
 
-int verifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file, FILE* o_file){
+int VerifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file, FILE* o_file){
   // Return -1 si pas bon
   if (i != NULL){
     //Ouvre le fichier si ne peut pas ferme le programme
@@ -19,7 +19,7 @@ int verifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file,
     }
     fclose(i_file);
     if ((k != NULL && o != NULL && l == -1 && m == NULL)){
-      if (!IskeyValid(k, (int) strlen(k))){
+      if (!IskeyValid(k, (int) strlen((char*)k))){
         fprintf(stderr, "ERROR : La clé %s n'est pas valide.\n", k);
         return -1;
       }
@@ -48,7 +48,7 @@ int verifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file,
         return choix;
       }else return choix;
     }
-    fprintf(stderr, "ERROR : Une erreur innatendu est intervenue.\n");
+    fprintf(stderr, "ERROR : Une erreur inattendu est intervenue.\n");
     return -1;
   }
   fprintf(stderr, "ERROR : Le paramètre -i est obligatoire et a besoin d'un argument .\n");
@@ -66,7 +66,7 @@ void LancementOption(int mode, char*  i, char* o, byte* k){
   switch (mode)
   {
     case 1:
-      xorcipher2(i, &len, o, (int)strlen(k), k);
+      xorcipher2(i, &len, o, (int)strlen((char*) k), k);
           break;
     case 10:
       //TODO for 3 -> 7 into fonction de cassage C1
@@ -76,7 +76,6 @@ void LancementOption(int mode, char*  i, char* o, byte* k){
       //TODO for 3 -> 7 into fonction de cassage C2
     case 21:
       //TODO Fonction de cassage C2
-      printf('test\n');
     case 320:
       //TODO for 3 -> 7 into fonction de cassage C3.2
     case 321:
@@ -89,7 +88,7 @@ void LancementOption(int mode, char*  i, char* o, byte* k){
       fprintf(stderr,"Fin du programme.\n");
           abort();
     default:
-      fprintf(stderr, "Bruh\n");//TODO : message d'erreur
+      fprintf(stderr, "ERROR : INCONNU\n");//TODO : message d'erreur
           abort();
   }
 }
@@ -133,7 +132,7 @@ void option(int argc, char** argv){
         abort();
       }
     }
-  int Instruction = verifOptions(i, o, k, l, m, i_file, o_file);
+  int Instruction = VerifOptions(i, o, k, l, m, i_file, o_file);
   LancementOption(Instruction, i, o, k);
 }
 
