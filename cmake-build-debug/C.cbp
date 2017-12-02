@@ -86,13 +86,16 @@
 		<Unit filename="/Users/quentin/Documents/Projet_S3/C/cipher.h">
 			<Option target="C"/>
 		</Unit>
+		<Unit filename="/Users/quentin/Documents/Projet_S3/C/copy.c">
+			<Option target="C"/>
+		</Unit>
+		<Unit filename="/Users/quentin/Documents/Projet_S3/C/copy.h">
+			<Option target="C"/>
+		</Unit>
 		<Unit filename="/Users/quentin/Documents/Projet_S3/C/main.c">
 			<Option target="C"/>
 		</Unit>
-		<Unit filename="/Users/quentin/Documents/Projet_S3/C/test.cpp">
-			<Option target="C"/>
-		</Unit>
-		<Unit filename="/Users/quentin/Documents/Projet_S3/C/test.h">
+		<Unit filename="/Users/quentin/Documents/Projet_S3/C/types.h">
 			<Option target="C"/>
 		</Unit>
 		<Unit filename="/Users/quentin/Documents/Projet_S3/C/valid.c">

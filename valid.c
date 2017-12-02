@@ -1,15 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
-#include "cipher.h"
+#include "types.h"
 
 const byte keyCharlist[] = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz,-.:?_{}0123456789";
 const int lenkeyCharList = 70;
 bool ValidTextChar(byte text){
   if (
   //Espace , Majuscules, Minuscules
-  (text == 32) || (text>64 && text<91) || (text>89 && text<123)
+  (text == 32) || (text>=65 && text<=90) || (text>=97 && text<=122)
   //Pontuations Only messages
   || (text == 33) || (text == 34)|| (text == 39) || (text == 40) || (text == 41) || (text == 59)
   //Ponctuations clé & messages
@@ -17,14 +16,18 @@ bool ValidTextChar(byte text){
   //ACCENTS
   // A
   || (text == 192) || (text == 194) || (text == 196) || (text == 224) || (text == 226) || (text == 228)
+  // C
+  || (text == 231) || (text == 199)
   // E
-  || (text>199 && text<204) ||(text>231 && text<236)
+  || (text>=200 && text<=203) ||(text>=232 && text<=235)
   // I
   || (text == 206) || (text == 207) || (text == 238) || (text == 239)
   // U
   || (text == 217) || (text == 219) || (text == 249) || (text == 251)
   // O
-  || (text == 212) || (text == 214) || (text == 244) || (text == 246) ){
+  || (text == 212) || (text == 214) || (text == 244) || (text == 246)
+  // Carriage return
+  || (text == 10)){
     return true;
   }
   return false;
@@ -33,7 +36,7 @@ bool ValidTextChar(byte text){
 bool ValidKeyChar(byte key){
   if (
   //Majuscules, Minuscules
-  (key>64 && key<91) || (key>89 && key<123)
+  (key>64 && key<91) || (key>96 && key<123)
   //Ponctuations clé & messages
   || (key == 44) || (key == 45) || (key == 46) || (key == 58) || (key == 63) || (key == 95) || (key == 123) || (key == 125)
   //Nombres
@@ -41,6 +44,22 @@ bool ValidKeyChar(byte key){
     return true;
   }
   return false;
+}
+
+bool IskeyValid(byte* key, int lenkey){
+  int i = 0;
+  bool res = true;
+  while (i< lenkey && res){
+    res = ValidKeyChar(key[i++]);
+  }
+  return res;
+}
+
+void libDoublePointeur(byte** pointeur, int lenPointeur) {
+  for (int i = 0; i < lenPointeur; i++) {
+    free(pointeur[i]);
+  }
+  free(pointeur);
 }
 
 bool IsKeyCharOk(const byte *tar, int lentar, byte keyChar, int indkey, int lenkey){
@@ -54,16 +73,7 @@ bool IsKeyCharOk(const byte *tar, int lentar, byte keyChar, int indkey, int lenk
   return true;
 }
 
-bool IskeyValid(byte* key, int lenkey){
-  int i = 0;
-  bool res = true;
-  while (i< lenkey && res){
-    res = ValidKeyChar(key[i++]);
-  }
-  return res;
-}
-
-byte** keygen(int lenkey,int lentar, byte *tar){
+byte** keygen(int lenkey, int lentar, byte *tar){
   byte** tab_key = (byte**) malloc(lenkey*sizeof(byte*));
   int nb_char;
   for (int i = 0; i < lenkey; i++) {
@@ -75,20 +85,17 @@ byte** keygen(int lenkey,int lentar, byte *tar){
         ++nb_char;
       }
     }
-    tab_key[i][nb_char] = '\0';
+    tab_key[i][nb_char] = (byte) '\0';
   }
   return tab_key;
 }
 
-void libDoublePointeur(byte** pointeur, int lenPointeur) {
-  for (int i = 0; i < lenPointeur; i++) {
-    free(pointeur[i]);
-  }
-  free(pointeur);
-}
+/*
+ * Fonctions pour String
+ */
 
 byte** buildkey(int lenkey, int lentar, byte *tar,int* nb){
-  byte** tab_key = keygen(lenkey, lentar, tar);;
+  byte** tab_key = keygen(lenkey, lentar, tar);
   int nb_key = 1;
   int nb_char[lenkey];
   int diviseur[lenkey];
@@ -116,4 +123,16 @@ byte** buildkey(int lenkey, int lentar, byte *tar,int* nb){
   }
   libDoublePointeur(tab_key, lenkey);
   return key;
+}
+
+void C1(int lenkey, int lentar, byte* tar){
+  byte** list_char = keygen(lenkey, lentar, tar);
+  for (int i = 0; i < lenkey; ++i) {
+    printf("[");
+    for (int j = 0; list_char[i][j]!='\0'; ++j) {
+      printf("%c", list_char[i][j]);
+    }
+    printf("]");
+  }
+  libDoublePointeur(list_char, lenkey);
 }

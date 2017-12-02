@@ -1,11 +1,11 @@
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
   "C"
-  "CXX"
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/quentin/Documents/Projet_S3/C/cipher.c" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/cipher.c.o"
+  "/Users/quentin/Documents/Projet_S3/C/copy.c" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/copy.c.o"
   "/Users/quentin/Documents/Projet_S3/C/main.c" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/main.c.o"
   "/Users/quentin/Documents/Projet_S3/C/valid.c" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/valid.c.o"
   )
@@ -13,14 +13,6 @@ set(CMAKE_C_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  )
-set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/quentin/Documents/Projet_S3/C/test.cpp" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/test.cpp.o"
-  )
-set(CMAKE_CXX_COMPILER_ID "AppleClang")
-
-# The include file search paths:
-set(CMAKE_CXX_TARGET_INCLUDE_PATH
   )
 
 # Targets to which this target links.

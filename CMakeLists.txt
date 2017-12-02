@@ -8,6 +8,9 @@ set(SOURCE_FILES
         cipher.h
         main.c
         valid.c
-        valid.h test.cpp test.h)
+        valid.h
+        copy.c
+        copy.h
+        types.h)
 
 add_executable(C ${SOURCE_FILES})

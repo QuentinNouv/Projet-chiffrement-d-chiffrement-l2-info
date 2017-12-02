@@ -6,6 +6,8 @@
 
 #include "cipher.h"
 #include "valid.h"
+#include "copy.h"
+
 
 
 int VerifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file, FILE* o_file){
@@ -26,6 +28,7 @@ int VerifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file,
       o_file = fopen(o, "w");
       if (o_file == NULL){
         fprintf(stderr, "ERROR : Le fichier %s ne peut être édité.\n", o);
+        return -1;
       }
       fclose(o_file);
       return 1;
@@ -36,12 +39,13 @@ int VerifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file,
        *      321  : C3.2 + L, 320  : C3.2 sans l
        */
       int choix = 0;
-      if (m == "C1") choix = 10;
-      else if (m == "C2") choix = 20;
-      else if (m == "C3.1") choix = 310;
-      else if (m == "C3.2") choix = 320;
+      if (!(strcmp(m, "C1"))) choix = 10;
+      else if (!(strcmp(m, "C2"))) choix = 20;
+      else if (!(strcmp(m, "C3.1"))) choix = 310;
+      else if (!(strcmp(m, "C3.2"))) choix = 320;
       else {
         fprintf(stderr, "ERROR : Le critère de cassage du  chiffrage est incorrect.\n");
+        return -1;
       }
       if (l > 0) {
         ++choix;
@@ -55,7 +59,7 @@ int VerifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file,
   return -1;
 }
 
-void LancementOption(int mode, char*  i, char* o, byte* k){
+void LancementOption(int mode, char*  i, char* o, byte* k, int l){
   // mode -1 erreur, 1 chiffrage
   /* Code 11   : C1   + l, 10   : C1   sans l
    *      21   : C2   + L, 20   : C2   sans l
@@ -63,15 +67,27 @@ void LancementOption(int mode, char*  i, char* o, byte* k){
    *      321  : C3.2 + L, 320  : C3.2 sans l
    */
   int len;
+  int m = 0;
+  FILE* file_i;
+  byte* tar;
   switch (mode)
   {
     case 1:
       xorcipher2(i, &len, o, (int)strlen((char*) k), k);
-          break;
+      break;
     case 10:
-      //TODO for 3 -> 7 into fonction de cassage C1
+      file_i = fopen(i, "r");
+      tar = copyfile(file_i);
+      m = (int) strlen((char*) tar);
+      for (int j = 3; j < 8 ; ++j) {
+        // printf("Solution pour les clé de longueur %d : \n", j);
+        C1(j, m, tar);
+      }
     case 11:
-      //TODO Fonction de cassage C1
+      file_i = fopen(i, "r");
+      tar = copyfile(file_i);
+      C1(l, (int) strlen((char*) tar), tar);
+      break;
     case 20:
       //TODO for 3 -> 7 into fonction de cassage C2
     case 21:
@@ -102,7 +118,7 @@ void option(int argc, char** argv){
   byte* k = NULL;
   long l = -1;
   char* m = NULL;
-  while((c = getopt(argc, argv, "i:o:k:l:")) != -1) {
+  while((c = getopt(argc, argv, "i:o:k:l:m:")) != -1) {
     switch (c)
       {
       case 'i':
@@ -132,12 +148,16 @@ void option(int argc, char** argv){
         abort();
       }
     }
-  int Instruction = VerifOptions(i, o, k, l, m, i_file, o_file);
-  LancementOption(Instruction, i, o, k);
+  int Instruction = VerifOptions(i, o, k, (int) l, m, i_file, o_file);
+  LancementOption(Instruction, i, o, k, (int) l);
 }
 
 
 int main(int argc, char **argv) {
   option(argc, argv);
+/*  byte* test;
+  FILE* file = fopen("../../tests/decrypted/df9_bovary-isolatin1.txt", "r");
+  test = copyfile(file);
+  printf("%s", test);*/
   return 0;
 }

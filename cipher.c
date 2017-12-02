@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "types.h"
 
-
-typedef unsigned char byte;
-
-void xorcipher(int lenkey, const byte *key, int lentar,byte *tar){
+void xorcipher(int lenkey, const byte *key, int lentar, byte *tar){
   //vestige du passé
   for (int i = 0; i < lentar; ++i) {
     tar[i] ^= key[i%lenkey];
@@ -22,10 +20,9 @@ void xorcipher2(char* file_i, int* len, char* file_o, int lenkey, const byte *ke
     fprintf(stderr,"ERROR : Fichier %s non éditable.", file_o);
     abort();
   }
-  int c;
-  while ((c = fgetc(file)) != EOF)
+  char c;
+  while ((fscanf(file, "%c", &c)) != EOF)
   {
-
     c ^= key[(*len)%lenkey];
     fputc(c, sortie);
     ++(*len);
