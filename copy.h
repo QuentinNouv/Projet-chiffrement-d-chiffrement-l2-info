@@ -4,5 +4,5 @@
 #ifndef C_COPY_H
 #define C_COPY_H
 #include "types.h"
-byte* copyfile(FILE* file);
+byte* copyfile(FILE* file, int *lentar);
 #endif //C_COPY_H

@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include "types.h"
 
-const byte keyCharlist[] = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz,-.:?_{}0123456789";
+const byte keyCharlist[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ,-.:?_abcdefghijklmnopqrstuvwxyz{}";
 const int lenkeyCharList = 70;
 bool ValidTextChar(byte text){
   if (
@@ -17,7 +17,7 @@ bool ValidTextChar(byte text){
   // A
   || (text == 192) || (text == 194) || (text == 196) || (text == 224) || (text == 226) || (text == 228)
   // C
-  || (text == 231) || (text == 199)
+  || (text == 131) || (text == 199)
   // E
   || (text>=200 && text<=203) ||(text>=232 && text<=235)
   // I
@@ -36,7 +36,7 @@ bool ValidTextChar(byte text){
 bool ValidKeyChar(byte key){
   if (
   //Majuscules, Minuscules
-  (key>64 && key<91) || (key>96 && key<123)
+  (key>=65 && key<=90) || (key>=97 && key<=122)
   //Ponctuations clé & messages
   || (key == 44) || (key == 45) || (key == 46) || (key == 58) || (key == 63) || (key == 95) || (key == 123) || (key == 125)
   //Nombres
@@ -134,5 +134,6 @@ void C1(int lenkey, int lentar, byte* tar){
     }
     printf("]");
   }
+  printf("\n");
   libDoublePointeur(list_char, lenkey);
 }

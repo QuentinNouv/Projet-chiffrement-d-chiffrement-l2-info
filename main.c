@@ -66,8 +66,7 @@ void LancementOption(int mode, char*  i, char* o, byte* k, int l){
    *      311  : C3.1 + L, 310  : C3.1 sans l
    *      321  : C3.2 + L, 320  : C3.2 sans l
    */
-  int len;
-  int m = 0;
+  int len, lentar;
   FILE* file_i;
   byte* tar;
   switch (mode)
@@ -77,16 +76,15 @@ void LancementOption(int mode, char*  i, char* o, byte* k, int l){
       break;
     case 10:
       file_i = fopen(i, "r");
-      tar = copyfile(file_i);
-      m = (int) strlen((char*) tar);
+      tar = copyfile(file_i, &lentar);
       for (int j = 3; j < 8 ; ++j) {
         // printf("Solution pour les clé de longueur %d : \n", j);
-        C1(j, m, tar);
+        C1(j, lentar, tar);
       }
     case 11:
       file_i = fopen(i, "r");
-      tar = copyfile(file_i);
-      C1(l, (int) strlen((char*) tar), tar);
+      tar = copyfile(file_i, &lentar);
+      C1(l, lentar, tar);
       break;
     case 20:
       //TODO for 3 -> 7 into fonction de cassage C2
