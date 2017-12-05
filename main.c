@@ -7,6 +7,7 @@
 #include "cipher.h"
 #include "valid.h"
 #include "copy.h"
+#include "freq.h"
 
 
 
@@ -78,7 +79,7 @@ void LancementOption(int mode, char*  i, char* o, byte* k, int l){
       file_i = fopen(i, "r");
       tar = copyfile(file_i, &lentar);
       for (int j = 3; j < 8 ; ++j) {
-        // printf("Solution pour les clé de longueur %d : \n", j);
+        printf("Solution pour les clé de longueur %d : \n", j);
         C1(j, lentar, tar);
       }
     case 11:
@@ -88,22 +89,29 @@ void LancementOption(int mode, char*  i, char* o, byte* k, int l){
       break;
     case 20:
       //TODO for 3 -> 7 into fonction de cassage C2
+      break;
     case 21:
-      //TODO Fonction de cassage C2
+      file_i = fopen(i, "r");
+      tar = copyfile(file_i, &lentar);
+      C2(l, lentar, tar);
+      break;
     case 320:
       //TODO for 3 -> 7 into fonction de cassage C3.2
     case 321:
+      break;
       //TODO Fonction de cassage C3.2
     case 310:
+      break;
       //TODO for 3 -> 7 into fonction de cassage C3.1
     case 311:
+      break;
       //TODO Fonction de cassage C3.1
     case -1:
       fprintf(stderr,"Fin du programme.\n");
-          abort();
+          exit(-1);
     default:
       fprintf(stderr, "ERROR : INCONNU\n");//TODO : message d'erreur
-          abort();
+      exit(-1);
   }
 }
 
@@ -117,8 +125,7 @@ void option(int argc, char** argv){
   long l = -1;
   char* m = NULL;
   while((c = getopt(argc, argv, "i:o:k:l:m:")) != -1) {
-    switch (c)
-      {
+    switch (c) {
       case 'i':
         i = optarg;
         break;
@@ -126,7 +133,7 @@ void option(int argc, char** argv){
         o = optarg;
         break;
       case 'k':
-        k = (byte*) optarg;
+        k = (byte *) optarg;
         break;
       case 'l':
         l = strtol(optarg, NULL, 10);
@@ -135,15 +142,19 @@ void option(int argc, char** argv){
         m = optarg;
         break;
       case '?':
-        if (optopt == 'c')
+        if (optopt == 'c'){
           fprintf(stderr, "L'option -%c à besoin d'un argument.\n", optopt);
-        else if (isprint(optopt))
+          exit(-1);
+        }
+        else if (isprint(optopt)) {
           fprintf(stderr, "Option inconnue `-%c'.\n", optopt);
-        else
+          exit(-1);
+    }else{
           fprintf(stderr,"Caractère inconnue`\\x%x'.\n", optopt);
-        abort();
+          exit(-1);
+      }
       default:
-        abort();
+        exit(-1);
       }
     }
   int Instruction = VerifOptions(i, o, k, (int) l, m, i_file, o_file);

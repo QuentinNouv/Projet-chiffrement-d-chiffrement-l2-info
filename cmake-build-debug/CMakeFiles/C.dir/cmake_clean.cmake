@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/C.dir/main.c.o"
   "CMakeFiles/C.dir/valid.c.o"
   "CMakeFiles/C.dir/copy.c.o"
+  "CMakeFiles/C.dir/freq.c.o"
   "C.pdb"
   "C"
 )

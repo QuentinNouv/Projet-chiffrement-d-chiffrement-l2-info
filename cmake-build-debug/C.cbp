@@ -92,6 +92,12 @@
 		<Unit filename="/Users/quentin/Documents/Projet_S3/C/copy.h">
 			<Option target="C"/>
 		</Unit>
+		<Unit filename="/Users/quentin/Documents/Projet_S3/C/freq.c">
+			<Option target="C"/>
+		</Unit>
+		<Unit filename="/Users/quentin/Documents/Projet_S3/C/freq.h">
+			<Option target="C"/>
+		</Unit>
 		<Unit filename="/Users/quentin/Documents/Projet_S3/C/main.c">
 			<Option target="C"/>
 		</Unit>

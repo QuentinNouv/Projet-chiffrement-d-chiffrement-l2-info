@@ -177,6 +177,33 @@ copy.c.s:
 	$(MAKE) -f CMakeFiles/C.dir/build.make CMakeFiles/C.dir/copy.c.s
 .PHONY : copy.c.s
 
+freq.o: freq.c.o
+
+.PHONY : freq.o
+
+# target to build an object file
+freq.c.o:
+	$(MAKE) -f CMakeFiles/C.dir/build.make CMakeFiles/C.dir/freq.c.o
+.PHONY : freq.c.o
+
+freq.i: freq.c.i
+
+.PHONY : freq.i
+
+# target to preprocess a source file
+freq.c.i:
+	$(MAKE) -f CMakeFiles/C.dir/build.make CMakeFiles/C.dir/freq.c.i
+.PHONY : freq.c.i
+
+freq.s: freq.c.s
+
+.PHONY : freq.s
+
+# target to generate assembly for a file
+freq.c.s:
+	$(MAKE) -f CMakeFiles/C.dir/build.make CMakeFiles/C.dir/freq.c.s
+.PHONY : freq.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -246,6 +273,9 @@ help:
 	@echo "... copy.o"
 	@echo "... copy.i"
 	@echo "... copy.s"
+	@echo "... freq.o"
+	@echo "... freq.i"
+	@echo "... freq.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

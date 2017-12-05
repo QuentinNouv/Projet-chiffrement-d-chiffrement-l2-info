@@ -30,6 +30,36 @@ types.h
 types.h
 /Users/quentin/Documents/Projet_S3/C/types.h
 
+/Users/quentin/Documents/Projet_S3/C/freq.c
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+types.h
+/Users/quentin/Documents/Projet_S3/C/types.h
+valid.h
+/Users/quentin/Documents/Projet_S3/C/valid.h
+cipher.h
+/Users/quentin/Documents/Projet_S3/C/cipher.h
+
+/Users/quentin/Documents/Projet_S3/C/freq.h
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+string.h
+-
+types.h
+/Users/quentin/Documents/Projet_S3/C/types.h
+valid.h
+/Users/quentin/Documents/Projet_S3/C/valid.h
+cipher.h
+/Users/quentin/Documents/Projet_S3/C/cipher.h
+
 /Users/quentin/Documents/Projet_S3/C/main.c
 stdio.h
 -
@@ -47,6 +77,8 @@ valid.h
 /Users/quentin/Documents/Projet_S3/C/valid.h
 copy.h
 /Users/quentin/Documents/Projet_S3/C/copy.h
+freq.h
+/Users/quentin/Documents/Projet_S3/C/freq.h
 
 /Users/quentin/Documents/Projet_S3/C/types.h
 

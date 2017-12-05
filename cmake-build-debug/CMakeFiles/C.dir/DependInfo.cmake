@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/quentin/Documents/Projet_S3/C/cipher.c" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/cipher.c.o"
   "/Users/quentin/Documents/Projet_S3/C/copy.c" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/copy.c.o"
+  "/Users/quentin/Documents/Projet_S3/C/freq.c" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/freq.c.o"
   "/Users/quentin/Documents/Projet_S3/C/main.c" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/main.c.o"
   "/Users/quentin/Documents/Projet_S3/C/valid.c" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/valid.c.o"
   )
