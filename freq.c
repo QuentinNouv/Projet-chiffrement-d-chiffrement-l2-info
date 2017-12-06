@@ -9,10 +9,10 @@
 #include "cipher.h"
 
 #define Nb_L_Alphabet 26
-#define MaxChar_L 11
+#define MaxChar_L 30
 
 const float freq_th[Nb_L_Alphabet] = {9.42, 1.02, 2.64, 3.39, 15.87, 0.95, 1.04, 0.77, 8.41, 0.89, 0.00, 5.34, 3.24, 7.15, 5.14, 2.86, 1.06, 6.46, 7.90, 7.26, 6.24, 2.15, 0.00, 0.30, 0.24, 0.32};
-const byte alphabet[Nb_L_Alphabet+1][MaxChar_L] = {" ,-.:?{}!\"", "aAàâäÀÂÄ", "bB", "cCçÇ", "dD", "eEèéêëÈÉÊË", "fF", "gG", "hH", "iIîïÎÏ", "jJ", "kK", "lL", "mM", "nN", "oOôöÔÖ", "pP", "qQ", "rR", "sS", "uUùûÙÛ", "vV", "wW", "xX", "yY", "zZ"};
+byte alphabet[Nb_L_Alphabet][MaxChar_L] = {"aAàâäÀÂÄ\0", "bB", "cCçÇ", "dD", "eEèéêëÈÉÊË", "fF", "gG", "hH", "iIîïÎÏ", "jJ", "kK", "lL", "mM", "nN", "oOôöÔÖ", "pP", "qQ", "rR", "sS", "tT","uUùûÙÛ", "vV", "wW", "xX", "yY", "zZ"};
 
 void libDoublePointeurFLoat(float** pointeur, int lenPointeur) {
   for (int i = 0; i < lenPointeur; i++) {
@@ -21,14 +21,14 @@ void libDoublePointeurFLoat(float** pointeur, int lenPointeur) {
   free(pointeur);
 }
 
-int8_t index_lettre(byte carac){
-  int8_t j = 0;
+int index_lettre(byte carac){
+  int j = 0;
   char temp;
-  for (int8_t i = 0; i < Nb_L_Alphabet; ++i) {
+  for (int i = 0; i < Nb_L_Alphabet; ++i) {
     temp = alphabet[i][0];
     while (temp != '\0'){
       if (temp == carac){
-        return (int8_t) (i - 1);
+        return i;
       }
       temp = alphabet[i][++j];
     }
@@ -38,7 +38,7 @@ int8_t index_lettre(byte carac){
 }
 
 float* Calc_Freq(byte* tar, int lentar){
-  int8_t ind_Lettre;
+  int ind_Lettre;
   int nb_lettre = 0;
   float* freq = calloc(Nb_L_Alphabet, sizeof(float));
   for (int i = 0; i < lentar; ++i) {
@@ -50,6 +50,7 @@ float* Calc_Freq(byte* tar, int lentar){
   }
   for (int j = 0; j < Nb_L_Alphabet; ++j) {
     freq[j] /= nb_lettre;
+    freq[j] *= 100;
   }
   return freq;
 }
@@ -57,7 +58,7 @@ float* Calc_Freq(byte* tar, int lentar){
 float Calcul_Prox(float* freq){
   float prox = 0;
   for (int i = 0; i < Nb_L_Alphabet; ++i) {
-    prox += exp2f(freq_th[i]-freq[i]);
+    prox += powf(freq_th[i]-freq[i], 2);
   }
   return prox;
 }
@@ -83,7 +84,7 @@ void C2(int lenkey, int lentar, byte* tar){
         temp_min_prox = Calcul_Prox(tab_freq[i]);
       }
     }
-    //printf("%s %s %f %f\n", liste_key[i], temp_key, temp_min_prox, temp_prox);
+    //printf("]\n%s %s %f %f \n", liste_key[i], temp_key, temp_min_prox, temp_prox);
     xorcipher(lenkey, liste_key[i], lentar, tar);
   }
   printf("%s\n", temp_key);
