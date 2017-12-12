@@ -1,6 +1,8 @@
 #ifndef valid
 #define valid
 #include "types.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 bool IskeyValid(byte* key, int lenkey);
 byte** buildkey(int lenkey, int lentar, byte *tar,int* nb);

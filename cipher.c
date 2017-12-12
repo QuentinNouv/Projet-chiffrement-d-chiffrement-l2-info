@@ -3,7 +3,6 @@
 #include "types.h"
 
 void xorcipher(int lenkey, const byte *key, int lentar, byte *tar){
-  //vestige du passé
   for (int i = 0; i < lentar; ++i) {
     tar[i] ^= key[i%lenkey];
   }

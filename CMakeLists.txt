@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(C)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_C_STANDARD 99)
 
 set(SOURCE_FILES
         cipher.c
@@ -11,6 +11,6 @@ set(SOURCE_FILES
         valid.h
         copy.c
         copy.h
-        types.h freq.c freq.h)
+        types.h freq.c freq.h dico.c dico.h)
 
 add_executable(C ${SOURCE_FILES})

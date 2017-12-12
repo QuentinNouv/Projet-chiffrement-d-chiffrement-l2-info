@@ -6,31 +6,26 @@
 const byte keyCharlist[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ,-.:?_abcdefghijklmnopqrstuvwxyz{}";
 const int lenkeyCharList = 70;
 bool ValidTextChar(byte text){
-  if (
-  //Espace , Majuscules, Minuscules
-  (text == 32) || (text>=65 && text<=90) || (text>=97 && text<=122)
-  //Pontuations Only messages
-  || (text == 33) || (text == 34)|| (text == 39) || (text == 40) || (text == 41) || (text == 59)
-  //Ponctuations clé & messages
-  || (text == 44) || (text == 45) || (text == 46) || (text == 58) || (text == 63) || (text == 95) || (text == 123) || (text == 125)
-  //ACCENTS
-  // A
-  || (text == 192) || (text == 194) || (text == 196) || (text == 224) || (text == 226) || (text == 228)
-  // C
-  || (text == 131) || (text == 199)
-  // E
-  || (text>=200 && text<=203) ||(text>=232 && text<=235)
-  // I
-  || (text == 206) || (text == 207) || (text == 238) || (text == 239)
-  // U
-  || (text == 217) || (text == 219) || (text == 249) || (text == 251)
-  // O
-  || (text == 212) || (text == 214) || (text == 244) || (text == 246)
-  // Carriage return
-  || (text == 10)){
-    return true;
-  }
-  return false;
+  return ((text == 32) || (text >= 65 && text <= 90) || (text >= 97 && text <= 122)
+//Pontuations Only messages
+|| (text == 33) || (text == 34) || (text == 39) || (text == 40) || (text == 41) || (text == 59)
+//Ponctuations clé & messages
+|| (text == 44) || (text == 45) || (text == 46) || (text == 58) || (text == 63) || (text == 95) || (text == 123) || (text == 125)
+//ACCENTS
+// A
+|| (text == 192) || (text == 194) || (text == 196) || (text == 224) || (text == 226) || (text == 228)
+// C
+|| (text == 131) || (text == 199)
+// E
+|| (text>=200 && text<=203) || (text>=232 && text<=235)
+// I
+|| (text == 206) || (text == 207) || (text == 238) || (text == 239)
+// U
+|| (text == 217) || (text == 219) || (text == 249) || (text == 251)
+// O
+|| (text == 212) || (text == 214) || (text == 244) || (text == 246)
+// Carriage return
+|| (text == 10));
 }
 
 bool ValidKeyChar(byte key){
@@ -104,6 +99,7 @@ byte** buildkey(int lenkey, int lentar, byte *tar,int* nb){
     for (int j = 0; tab_key[i][j]!='\0'; j++) {
       ++nb_char[i];
     }
+    if (nb_char[i] == 0) return NULL;
     nb_key *= nb_char[i];
   }
   for (int i = 0; i < lenkey; i++) {

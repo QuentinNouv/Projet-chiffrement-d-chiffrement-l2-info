@@ -8,6 +8,7 @@
 #include "valid.h"
 #include "copy.h"
 #include "freq.h"
+#include "dico.h"
 
 
 
@@ -78,9 +79,9 @@ void LancementOption(int mode, char*  i, char* o, byte* k, int l){
     case 10:
       file_i = fopen(i, "r");
       tar = copyfile(file_i, &lentar);
-      for (int j = 3; j < 8 ; ++j) {
-        printf("Solution pour les clé de longueur %d : \n", j);
-        C1(j, lentar, tar);
+      for (int lenkey = 3; lenkey < 8 ; ++lenkey) {
+        printf("Solution pour les clé de longueur %d : \n", lenkey);
+        C1(lenkey, lentar, tar);
       }
     case 11:
       file_i = fopen(i, "r");
@@ -88,7 +89,11 @@ void LancementOption(int mode, char*  i, char* o, byte* k, int l){
       C1(l, lentar, tar);
       break;
     case 20:
-      //TODO for 3 -> 7 into fonction de cassage C2
+      file_i = fopen(i, "r");
+      tar = copyfile(file_i, &lentar);
+      for (int lenkey = 3; lenkey < 8; ++lenkey) {
+        C2(lenkey, lentar, tar);
+      }
       break;
     case 21:
       file_i = fopen(i, "r");
@@ -163,10 +168,11 @@ void option(int argc, char** argv){
 
 
 int main(int argc, char **argv) {
-  option(argc, argv);
-/*  byte* test;
-  FILE* file = fopen("../../tests/decrypted/df9_bovary-isolatin1.txt", "r");
-  test = copyfile(file);
-  printf("%s", test);*/
+  //option(argc, argv);
+  byte* test;
+  int nb = 0;
+  FILE* file = fopen("../../tests/crypted/df9_bovary-isolatin1.txt", "r");
+  test = copyfile(file, &nb);
+  C3(3, nb, test);
   return 0;
 }

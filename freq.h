@@ -5,10 +5,7 @@
 #ifndef C_FREQ_H
 #define C_FREQ_H
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <math.h>
-#include <string.h>
 #include "types.h"
 #include "valid.h"
 #include "cipher.h"

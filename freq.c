@@ -1,8 +1,6 @@
 //
 // Created by Quentin Nouvel on 04/12/2017.
 //
-#include <stdio.h>
-#include <stdlib.h>
 #include <math.h>
 #include "types.h"
 #include "valid.h"
@@ -12,7 +10,7 @@
 #define MaxChar_L 30
 
 const float freq_th[Nb_L_Alphabet] = {9.42, 1.02, 2.64, 3.39, 15.87, 0.95, 1.04, 0.77, 8.41, 0.89, 0.00, 5.34, 3.24, 7.15, 5.14, 2.86, 1.06, 6.46, 7.90, 7.26, 6.24, 2.15, 0.00, 0.30, 0.24, 0.32};
-byte alphabet[Nb_L_Alphabet][MaxChar_L] = {"aAàâäÀÂÄ\0", "bB", "cCçÇ", "dD", "eEèéêëÈÉÊË", "fF", "gG", "hH", "iIîïÎÏ", "jJ", "kK", "lL", "mM", "nN", "oOôöÔÖ", "pP", "qQ", "rR", "sS", "tT","uUùûÙÛ", "vV", "wW", "xX", "yY", "zZ"};
+byte alphabet[Nb_L_Alphabet][MaxChar_L] = {"aAàâäÀÂÄ", "bB", "cCçÇ", "dD", "eEèéêëÈÉÊË", "fF", "gG", "hH", "iIîïÎÏ", "jJ", "kK", "lL", "mM", "nN", "oOôöÔÖ", "pP", "qQ", "rR", "sS", "tT","uUùûÙÛ", "vV", "wW", "xX", "yY", "zZ"};
 
 void libDoublePointeurFLoat(float** pointeur, int lenPointeur) {
   for (int i = 0; i < lenPointeur; i++) {
@@ -63,13 +61,14 @@ float Calcul_Prox(float* freq){
   return prox;
 }
 
-void C2(int lenkey, int lentar, byte* tar){
+int C2(int lenkey, int lentar, byte* tar){
   int nb;
   float** tab_freq;
   float temp_min_prox = 0;
   float temp_prox;
   byte* temp_key = NULL;
   byte** liste_key = buildkey(lenkey, lentar, tar, &nb);
+  if (liste_key == NULL) return 1;
   tab_freq = (float**) malloc(nb*sizeof(float*));
   for (int i = 0; i < nb; ++i) {
     xorcipher(lenkey, liste_key[i], lentar, tar);
@@ -89,4 +88,6 @@ void C2(int lenkey, int lentar, byte* tar){
   }
   printf("%s\n", temp_key);
   libDoublePointeurFLoat(tab_freq, nb);
+  libDoublePointeur(liste_key, nb);
+  return 0;
 }
