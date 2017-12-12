@@ -7,6 +7,11 @@ CMakeFiles/C.dir/cipher.c.o: ../types.h
 CMakeFiles/C.dir/copy.c.o: ../copy.c
 CMakeFiles/C.dir/copy.c.o: ../types.h
 
+CMakeFiles/C.dir/dico.c.o: ../cipher.h
+CMakeFiles/C.dir/dico.c.o: ../dico.c
+CMakeFiles/C.dir/dico.c.o: ../types.h
+CMakeFiles/C.dir/dico.c.o: ../valid.h
+
 CMakeFiles/C.dir/freq.c.o: ../cipher.h
 CMakeFiles/C.dir/freq.c.o: ../freq.c
 CMakeFiles/C.dir/freq.c.o: ../types.h
@@ -14,6 +19,7 @@ CMakeFiles/C.dir/freq.c.o: ../valid.h
 
 CMakeFiles/C.dir/main.c.o: ../cipher.h
 CMakeFiles/C.dir/main.c.o: ../copy.h
+CMakeFiles/C.dir/main.c.o: ../dico.h
 CMakeFiles/C.dir/main.c.o: ../freq.h
 CMakeFiles/C.dir/main.c.o: ../main.c
 CMakeFiles/C.dir/main.c.o: ../types.h

@@ -92,6 +92,12 @@
 		<Unit filename="/Users/quentin/Documents/Projet_S3/C/copy.h">
 			<Option target="C"/>
 		</Unit>
+		<Unit filename="/Users/quentin/Documents/Projet_S3/C/dico.c">
+			<Option target="C"/>
+		</Unit>
+		<Unit filename="/Users/quentin/Documents/Projet_S3/C/dico.h">
+			<Option target="C"/>
+		</Unit>
 		<Unit filename="/Users/quentin/Documents/Projet_S3/C/freq.c">
 			<Option target="C"/>
 		</Unit>
@@ -99,6 +105,9 @@
 			<Option target="C"/>
 		</Unit>
 		<Unit filename="/Users/quentin/Documents/Projet_S3/C/main.c">
+			<Option target="C"/>
+		</Unit>
+		<Unit filename="/Users/quentin/Documents/Projet_S3/C/test.c">
 			<Option target="C"/>
 		</Unit>
 		<Unit filename="/Users/quentin/Documents/Projet_S3/C/types.h">
