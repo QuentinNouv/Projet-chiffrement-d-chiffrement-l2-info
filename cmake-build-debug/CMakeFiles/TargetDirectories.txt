@@ -1,3 +1,0 @@
-/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir

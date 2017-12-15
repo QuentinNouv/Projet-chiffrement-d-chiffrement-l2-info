@@ -101,16 +101,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="valid.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/valid.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="19" lean-forward="false" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="dico.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dico.c">
           <provider selected="true" editor-type-id="text-editor">
@@ -229,6 +219,11 @@
               <item name="C" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
               <item name="C" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="C" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="C" type="462c0819:PsiDirectoryNode" />
+              <item name="cmake-build-debug" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -298,7 +293,7 @@
       <workItem from="1513007530751" duration="550000" />
       <workItem from="1513121314603" duration="378000" />
       <workItem from="1513357292482" duration="2990000" />
-      <workItem from="1513371581064" duration="5914000" />
+      <workItem from="1513371581064" duration="6161000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout de la gestion d'options en entrée">
       <created>1511359314829</created>
@@ -381,7 +376,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135196000" />
+    <option name="totallyTimeSpent" value="135443000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -445,14 +440,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/freq.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/copy.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -846,6 +833,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

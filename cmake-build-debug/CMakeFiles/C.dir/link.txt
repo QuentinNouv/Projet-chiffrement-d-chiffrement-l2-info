@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/cc -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/C.dir/cipher.c.o CMakeFiles/C.dir/main.c.o CMakeFiles/C.dir/valid.c.o CMakeFiles/C.dir/copy.c.o CMakeFiles/C.dir/freq.c.o CMakeFiles/C.dir/dico.c.o  -o C 
