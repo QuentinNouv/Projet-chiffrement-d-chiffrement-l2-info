@@ -11,10 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f82cf10-2226-42bb-b791-e2ad88a05a4b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/C" afterPath="$PROJECT_DIR$/cmake-build-debug/C" />
-    </list>
+    <list default="true" id="4f82cf10-2226-42bb-b791-e2ad88a05a4b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -301,7 +298,7 @@
       <workItem from="1513007530751" duration="550000" />
       <workItem from="1513121314603" duration="378000" />
       <workItem from="1513357292482" duration="2990000" />
-      <workItem from="1513371581064" duration="5768000" />
+      <workItem from="1513371581064" duration="5914000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout de la gestion d'options en entrée">
       <created>1511359314829</created>
@@ -384,7 +381,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135050000" />
+    <option name="totallyTimeSpent" value="135196000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
