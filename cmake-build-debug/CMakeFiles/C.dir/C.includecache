@@ -42,14 +42,6 @@ valid.h
 cipher.h
 /Users/quentin/Documents/Projet_S3/C/cipher.h
 
-/Users/quentin/Documents/Projet_S3/C/dico.h
-types.h
-/Users/quentin/Documents/Projet_S3/C/types.h
-valid.h
-/Users/quentin/Documents/Projet_S3/C/valid.h
-cipher.h
-/Users/quentin/Documents/Projet_S3/C/cipher.h
-
 /Users/quentin/Documents/Projet_S3/C/freq.c
 math.h
 -
@@ -89,8 +81,6 @@ copy.h
 /Users/quentin/Documents/Projet_S3/C/copy.h
 freq.h
 /Users/quentin/Documents/Projet_S3/C/freq.h
-dico.h
-/Users/quentin/Documents/Projet_S3/C/dico.h
 
 /Users/quentin/Documents/Projet_S3/C/types.h
 

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "types.h"
 byte* copyfile(FILE* file, int* lentar){
-  int taille = 100;
+  int taille = 500;
   int i = 0;
   byte c;
   byte* copy = (byte*) malloc(taille*sizeof(byte));

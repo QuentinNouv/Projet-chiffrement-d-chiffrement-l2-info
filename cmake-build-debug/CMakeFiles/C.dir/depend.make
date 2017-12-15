@@ -19,7 +19,6 @@ CMakeFiles/C.dir/freq.c.o: ../valid.h
 
 CMakeFiles/C.dir/main.c.o: ../cipher.h
 CMakeFiles/C.dir/main.c.o: ../copy.h
-CMakeFiles/C.dir/main.c.o: ../dico.h
 CMakeFiles/C.dir/main.c.o: ../freq.h
 CMakeFiles/C.dir/main.c.o: ../main.c
 CMakeFiles/C.dir/main.c.o: ../types.h

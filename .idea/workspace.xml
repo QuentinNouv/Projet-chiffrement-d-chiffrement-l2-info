@@ -11,26 +11,15 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f82cf10-2226-42bb-b791-e2ad88a05a4b" name="Default" comment="Correction bug UTF-8 accent">
+    <list default="true" id="4f82cf10-2226-42bb-b791-e2ad88a05a4b" name="Default" comment="Opti de la recherche de caractère avec un switchcase plutot que parcourir une byte** qui est plutot stupide comme solution avec le recul.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change beforePath="$PROJECT_DIR$/cipher.c" afterPath="$PROJECT_DIR$/cipher.c" />
-      <change beforePath="$PROJECT_DIR$/cipher.h" afterPath="$PROJECT_DIR$/cipher.h" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/C" afterPath="$PROJECT_DIR$/cmake-build-debug/C" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/C.cbp" afterPath="$PROJECT_DIR$/cmake-build-debug/C.cbp" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/DependInfo.cmake" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/build.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/build.make" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/cipher.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/cipher.c.o" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/cmake_clean.cmake" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/link.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/link.txt" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/C.includecache" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/C.includecache" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/depend.internal" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/depend.internal" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/depend.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/depend.make" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/main.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/main.c.o" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/progress.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/C.dir/progress.make" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" />
+      <change beforePath="$PROJECT_DIR$/copy.c" afterPath="$PROJECT_DIR$/copy.c" />
       <change beforePath="$PROJECT_DIR$/freq.c" afterPath="$PROJECT_DIR$/freq.c" />
-      <change beforePath="$PROJECT_DIR$/main.c" afterPath="$PROJECT_DIR$/main.c" />
-      <change beforePath="$PROJECT_DIR$/test.c" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,12 +32,14 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="43">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="135">
+              <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="freq.c" pinned="false" current-in-tab="false">
+      <file leaf-file-name="freq.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/freq.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="135">
+              <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
               <folding>
                 <element signature="e#50#67#0" expanded="true" />
               </folding>
@@ -101,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <file leaf-file-name="copy.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/copy.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+            <state relative-caret-position="300">
+              <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -124,7 +115,7 @@
       <file leaf-file-name="dico.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dico.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
+            <state relative-caret-position="371">
               <caret line="56" column="7" lean-forward="false" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
               <folding>
                 <element signature="e#51#69#0" expanded="true" />
@@ -168,7 +159,6 @@
       <list>
         <option value="$PROJECT_DIR$/types.h" />
         <option value="$PROJECT_DIR$/copy.h" />
-        <option value="$PROJECT_DIR$/copy.c" />
         <option value="$PROJECT_DIR$/valid.h" />
         <option value="$PROJECT_DIR$/freq.h" />
         <option value="$PROJECT_DIR$/valid.c" />
@@ -177,10 +167,11 @@
         <option value="$PROJECT_DIR$/test.c" />
         <option value="$PROJECT_DIR$/cipher.c" />
         <option value="$PROJECT_DIR$/cipher.h" />
-        <option value="$PROJECT_DIR$/freq.c" />
         <option value="$PROJECT_DIR$/cmake-build-debug/Makefile" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/main.c" />
+        <option value="$PROJECT_DIR$/copy.c" />
+        <option value="$PROJECT_DIR$/freq.c" />
       </list>
     </option>
   </component>
@@ -191,7 +182,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="38" />
+    <option name="y" value="22" />
     <option name="width" value="1680" />
     <option name="height" value="936" />
   </component>
@@ -307,7 +298,8 @@
       <workItem from="1512661924020" duration="8000" />
       <workItem from="1513007530751" duration="550000" />
       <workItem from="1513121314603" duration="378000" />
-      <workItem from="1513357292482" duration="1472000" />
+      <workItem from="1513357292482" duration="2990000" />
+      <workItem from="1513371581064" duration="5176000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout de la gestion d'options en entrée">
       <created>1511359314829</created>
@@ -365,11 +357,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513121503848</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Opti de C2 en temps avec une fonction qui copy/xor a la fois au lieux de re-xor pour récuperer la tar de base.">
+      <created>1513359878501</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1513359878501</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127764000" />
+    <option name="totallyTimeSpent" value="134458000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -381,20 +380,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1680" height="950" extended-state="6" />
+    <frame x="0" y="22" width="1680" height="949" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10178571" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3257403" sideWeight="0.49642858" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252315" sideWeight="0.49642858" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32951945" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.50357145" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18690476" sideWeight="0.49761903" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18690476" sideWeight="0.49761903" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39886364" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39886364" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -418,7 +417,9 @@
     <MESSAGE value="Bug option et correction caractère message" />
     <MESSAGE value="Fréquence" />
     <MESSAGE value="Correction bug UTF-8 accent" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correction bug UTF-8 accent" />
+    <MESSAGE value="Opti de C2 en temps avec une fonction qui copy/xor a la fois au lieux de re-xor pour récuperer la tar de base." />
+    <MESSAGE value="Opti de la recherche de caractère avec un switchcase plutot que parcourir une byte** qui est plutot stupide comme solution avec le recul." />
+    <option name="LAST_COMMIT_MESSAGE" value="Opti de la recherche de caractère avec un switchcase plutot que parcourir une byte** qui est plutot stupide comme solution avec le recul." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -435,7 +436,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
           <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="62" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -460,7 +460,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1215">
           <caret line="81" column="27" lean-forward="true" selection-start-line="81" selection-start-column="27" selection-end-line="81" selection-end-column="27" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -485,7 +487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1440">
           <caret line="96" column="7" lean-forward="false" selection-start-line="96" selection-start-column="7" selection-end-line="96" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -500,7 +501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1665">
           <caret line="111" column="11" lean-forward="false" selection-start-line="111" selection-start-column="11" selection-end-line="111" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -526,7 +526,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2280">
           <caret line="152" column="0" lean-forward="true" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -541,7 +543,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1365">
           <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -557,7 +558,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2265">
           <caret line="151" column="20" lean-forward="true" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="20" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -575,7 +578,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -593,7 +598,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -611,7 +618,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -643,7 +652,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -651,7 +662,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -659,7 +672,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -667,7 +682,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -708,13 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/copy.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/copy.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -726,7 +736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -735,16 +744,6 @@
         <state relative-caret-position="60">
           <caret line="4" column="19" lean-forward="false" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dico.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="56" column="7" lean-forward="false" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
-          <folding>
-            <element signature="e#51#69#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -773,7 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-899">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -781,17 +779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="308" column="22" lean-forward="true" selection-start-line="308" selection-start-column="22" selection-end-line="308" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/freq.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#50#67#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -805,6 +792,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cipher.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -815,19 +810,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/copy.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        <state relative-caret-position="300">
+          <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="135">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dico.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="56" column="7" lean-forward="false" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
+          <folding>
+            <element signature="e#51#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/freq.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <folding>
+            <element signature="e#50#67#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
