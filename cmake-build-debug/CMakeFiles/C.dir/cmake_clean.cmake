@@ -5,7 +5,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/C.dir/copy.c.o"
   "CMakeFiles/C.dir/freq.c.o"
   "CMakeFiles/C.dir/dico.c.o"
-  "CMakeFiles/C.dir/test.c.o"
   "C.pdb"
   "C"
 )

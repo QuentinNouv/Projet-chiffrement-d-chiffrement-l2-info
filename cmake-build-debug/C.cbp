@@ -107,9 +107,6 @@
 		<Unit filename="/Users/quentin/Documents/Projet_S3/C/main.c">
 			<Option target="C"/>
 		</Unit>
-		<Unit filename="/Users/quentin/Documents/Projet_S3/C/test.c">
-			<Option target="C"/>
-		</Unit>
 		<Unit filename="/Users/quentin/Documents/Projet_S3/C/types.h">
 			<Option target="C"/>
 		</Unit>

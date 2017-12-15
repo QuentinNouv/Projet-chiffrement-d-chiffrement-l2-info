@@ -66,13 +66,14 @@ int C2(int lenkey, int lentar, byte* tar){
   float** tab_freq;
   float temp_min_prox = 0;
   float temp_prox;
+  byte* current_text;
   byte* temp_key = NULL;
   byte** liste_key = buildkey(lenkey, lentar, tar, &nb);
   if (liste_key == NULL) return 1;
   tab_freq = (float**) malloc(nb*sizeof(float*));
   for (int i = 0; i < nb; ++i) {
-    xorcipher(lenkey, liste_key[i], lentar, tar);
-    tab_freq[i] = Calc_Freq(tar, lentar);
+    current_text = XorcipherCopy(lenkey, liste_key[i], lentar, tar);
+    tab_freq[i] = Calc_Freq(current_text, lentar);
     if (i == 0){
       temp_key = liste_key[i];
       temp_min_prox = Calcul_Prox(tab_freq[i]);
@@ -84,7 +85,7 @@ int C2(int lenkey, int lentar, byte* tar){
       }
     }
     //printf("]\n%s %s %f %f \n", liste_key[i], temp_key, temp_min_prox, temp_prox);
-    xorcipher(lenkey, liste_key[i], lentar, tar);
+    free(current_text);
   }
   printf("%s\n", temp_key);
   libDoublePointeurFLoat(tab_freq, nb);

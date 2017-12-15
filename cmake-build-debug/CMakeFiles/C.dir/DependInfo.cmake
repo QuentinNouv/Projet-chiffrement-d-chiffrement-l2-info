@@ -9,7 +9,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/quentin/Documents/Projet_S3/C/dico.c" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/dico.c.o"
   "/Users/quentin/Documents/Projet_S3/C/freq.c" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/freq.c.o"
   "/Users/quentin/Documents/Projet_S3/C/main.c" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/main.c.o"
-  "/Users/quentin/Documents/Projet_S3/C/test.c" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/test.c.o"
   "/Users/quentin/Documents/Projet_S3/C/valid.c" "/Users/quentin/Documents/Projet_S3/C/cmake-build-debug/CMakeFiles/C.dir/valid.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")

@@ -11,6 +11,6 @@ set(SOURCE_FILES
         valid.h
         copy.c
         copy.h
-        types.h freq.c freq.h dico.c dico.h test.c)
+        types.h freq.c freq.h dico.c dico.h)
 
 add_executable(C ${SOURCE_FILES})

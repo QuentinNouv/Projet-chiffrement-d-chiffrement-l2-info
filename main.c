@@ -8,8 +8,6 @@
 #include "valid.h"
 #include "copy.h"
 #include "freq.h"
-#include "dico.h"
-
 
 
 int VerifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file, FILE* o_file){
@@ -168,11 +166,11 @@ void option(int argc, char** argv){
 
 
 int main(int argc, char **argv) {
-  //option(argc, argv);
+  option(argc, argv);/*
   byte* test;
   int nb = 0;
   FILE* file = fopen("../../tests/crypted/df9_bovary-isolatin1.txt", "r");
   test = copyfile(file, &nb);
-  C3(3, nb, test);
+  C3(3, nb, test);*/
   return 0;
 }
