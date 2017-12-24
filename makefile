@@ -1,10 +1,13 @@
 CC=gcc
 CFLAGS=-Wall
-OBJ=cipher.o valid.o main.o
+OBJ=dico.o freq.o copy.o cipher.o valid.o main.o
 
 util:	$(OBJ)
-	$(CC) $(OBJ) $(CFLAGS) -o xorcipher
+	$(CC) $(OBJ) $(CFLAGS) -o xorcipher -Ofast
 
+dico.o: dico.c
+freq.o: freq.c
+copy.o: copy.c
 cipher.o: cipher.c
 valid.o : valid.c
 main.o: main.c

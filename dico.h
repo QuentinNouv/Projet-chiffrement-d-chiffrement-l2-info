@@ -11,5 +11,5 @@
 
 void C3(int lenkey, int lentar, byte* tar);
 byte** ParsingTar(int lentar, byte* tar, int* nb);
-
+byte** parsing_prof(int lentar, byte* tar, int* nb);
 #endif //C_DICO_H

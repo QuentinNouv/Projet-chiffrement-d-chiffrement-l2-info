@@ -60,7 +60,8 @@ int VerifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file,
       }else if (l > 0) {
         ++choix;
         return choix;
-      }else return choix;
+      }
+      return choix;
     }
     fprintf(stderr, "ERROR : Une erreur inattendu est intervenue.\n");
     return -1;
@@ -73,8 +74,8 @@ void LancementOption(int mode, char*  i, char* o, byte* k, int l){
   // mode -1 erreur, 1 chiffrage
   /* Code 11   : C1   + l, 10   : C1   sans l
    *      21   : C2   + L, 20   : C2   sans l
-   *      311  : C3.1 + L, 310  : C3.1 sans l
-   *      321  : C3.2 + L, 320  : C3.2 sans l
+   *      31   : C3.1,
+   *      32   : C3.2,
    */
   int len, lentar;
   FILE* file_i;
@@ -117,9 +118,9 @@ void LancementOption(int mode, char*  i, char* o, byte* k, int l){
       file_i = fopen(i, "r");
       tar = copyfile(file_i, &lentar);
       if (l < 1){
-        l = 7;
+        l = 8;
       }
-      for (int lenkey = 3; lenkey <= l; ++lenkey) {
+      for (int lenkey = 3; lenkey < l; ++lenkey) {
         C3(lenkey, lentar, tar);
       }
       break;
@@ -180,14 +181,18 @@ void option(int argc, char** argv){
 
 
 int main(int argc, char **argv) {
-  //option(argc, argv);
-  byte* test;
+  option(argc, argv);
+  /*byte* test;
   int nb = 0;
-  FILE* file = fopen("../../tests/crypted/df9_mini.txt", "r");
+  int nb_mot;
+  FILE* file = fopen("../../tests/decrypted/df9_mini.txt", "r");
   test = copyfile(file, &nb);
-  C3(3, nb, test);
+  byte** mot = parsing_prof(nb, test, &nb_mot);
+  for (int i = 0; i < nb_mot; ++i) {
+    printf("%s ", mot[i]);
+  }*/
   //byte key[] = "Ba5";
   //xorcipher(3, key, nb, test);
-  //printf("\n%s", test);
+  //printf("\n%s", test);*/
   return 0;
 }

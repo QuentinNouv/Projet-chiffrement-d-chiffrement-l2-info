@@ -100,6 +100,56 @@ bool LettreMotDebut(byte carac){
   return false;
 }
 
+bool isseparator(const char c){
+  return (c == 32 || c == 33 || c == 59 || c == 44 || c == 46 || c == 58 || c == 63 || c == 10);
+}
+
+byte** parsing_prof(int lentar, byte* tar, int* nb){
+  int taille_liste_mot = 20;
+  int ind_mot = 0;
+  int ind_curseur = 0;
+  int taille_mot = 30;
+  int test = 0;
+  byte* mot = NULL;
+  byte** liste_mot = (byte**) malloc(taille_liste_mot* sizeof(byte*));
+  for (int i = 0; i < lentar; ++i) {
+    if (ind_curseur == 0){
+      if (!isseparator(tar[i])){
+        mot = (byte*) malloc(taille_mot*sizeof(byte));
+        mot[ind_curseur++] = (byte) tolower(tar[i]);
+      }
+    }else {
+      if (ind_curseur == taille_mot){
+        taille_mot += 10;
+        mot = (byte*) realloc(mot, taille_mot* sizeof(byte));
+
+      }
+      if (isupper(tar[i++])){
+        free(mot);
+        ind_curseur = 0;
+        while (!isseparator(tar[i++]));
+      }else if (isseparator(tar[i]) || isupper(tar[i])){
+        test = (int) strlen((const char *) mot);
+        //printf("%d \n", test);
+        liste_mot[ind_mot++] = mot;
+        ind_curseur = 0;
+        taille_mot = 30;
+        if (test > 4){
+          liste_mot[--ind_mot] = NULL;
+        }
+      }else {
+        mot[ind_curseur++] = (byte) tolower(tar[i]);
+      }
+    }
+    if (ind_mot+2 > taille_liste_mot){
+      taille_liste_mot += 10;
+      liste_mot = (byte**) realloc(liste_mot, taille_liste_mot*sizeof(byte*));
+    }
+  }
+  *nb = ind_mot;
+  return liste_mot;
+}
+
 byte** ParsingTar(int lentar, byte* tar, int* nb){
   int taille_liste_mot = 20;
   int ind_mot = -1;
@@ -175,19 +225,20 @@ int C3(int lenkey, int lentar, byte* tar){
   byte** liste_mot;
   for (int i = 0; i < nb; ++i) {
     current_text = XorcipherCopy(lenkey, liste_key[i], lentar, tar);
-    liste_mot = ParsingTar(lentar, current_text, &nb_mot_cle);
-    for (int j = 0; j < nb_mot_cle; ++j) {
+    liste_mot = parsing_prof(lentar, current_text, &nb_mot_cle);
+    /*for (int j = 0; j < nb_mot_cle; ++j) {
       printf("%s ", liste_mot[j]);
-    }
+    }*/
     score = text_score(liste_mot, nb_mot_cle, hashed_dico);
-    printf("%d %d\n", current_best_score, score);
-    if (score >= current_best_score){
+    //printf("%d %d\n", current_best_score, score);
+    if (score > current_best_score){
       current_best_score = score;
       current_best_key = liste_key[i];
     }
-    free(current_text);libDoublePointeur(liste_mot, nb_mot_cle);
+    free(current_text);
+    libDoublePointeur(liste_mot, nb_mot_cle);
   }
-  printf("%s", current_best_key);
+  printf("%s\n", current_best_key);
   libDoublePointeur(liste_key, nb);
   free(hashed_dico);
   return 0;
