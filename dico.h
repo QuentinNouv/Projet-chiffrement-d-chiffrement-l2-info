@@ -10,5 +10,6 @@
 #include "cipher.h"
 
 void C3(int lenkey, int lentar, byte* tar);
+byte** ParsingTar(int lentar, byte* tar, int* nb);
 
 #endif //C_DICO_H

@@ -8,6 +8,7 @@
 #include "valid.h"
 #include "copy.h"
 #include "freq.h"
+#include "dico.h"
 
 
 int VerifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file, FILE* o_file){
@@ -35,19 +36,28 @@ int VerifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file,
     } else if ((k == NULL && o == NULL && m != NULL)) {
       /* Code 11   : C1   + l, 10   : C1   sans l
        *      21   : C2   + L, 20   : C2   sans l
-       *      311  : C3.1 + L, 310  : C3.1 sans l
-       *      321  : C3.2 + L, 320  : C3.2 sans l
+       *      31   : C3.1
+       *      32   : C3.2,
        */
       int choix = 0;
-      if (!(strcmp(m, "C1"))) choix = 10;
-      else if (!(strcmp(m, "C2"))) choix = 20;
-      else if (!(strcmp(m, "C3.1"))) choix = 310;
-      else if (!(strcmp(m, "C3.2"))) choix = 320;
+      if (!(strcmp(m, "1"))) choix = 10;
+      else if (!(strcmp(m, "2"))) choix = 20;
+      else if (!(strcmp(m, "3.1"))) choix = 31;
+      else if (!(strcmp(m, "3.2"))) choix = 32;
       else {
         fprintf(stderr, "ERROR : Le critère de cassage du  chiffrage est incorrect.\n");
         return -1;
       }
-      if (l > 0) {
+      if (choix == 31){
+        if (l < 1) {
+          fprintf(stderr, "ERROR : Vous devez spécifiez une taille de clé valide pour l'option -m 31.\n");
+          return -1;
+        }
+      }else if (choix == 32){
+        if (l < 1) {
+          fprintf(stderr, "ERROR : Si vous ne spécifiez pas de valeurs pour -m 32 la valeurs 7 est prise par reférence.\n");
+        }
+      }else if (l > 0) {
         ++choix;
         return choix;
       }else return choix;
@@ -98,17 +108,21 @@ void LancementOption(int mode, char*  i, char* o, byte* k, int l){
       tar = copyfile(file_i, &lentar);
       C2(l, lentar, tar);
       break;
-    case 320:
-      //TODO for 3 -> 7 into fonction de cassage C3.2
-    case 321:
+    case 31:
+      file_i = fopen(i, "r");
+      tar = copyfile(file_i, &lentar);
+      C3(l, lentar, tar);
       break;
-      //TODO Fonction de cassage C3.2
-    case 310:
+    case 32:
+      file_i = fopen(i, "r");
+      tar = copyfile(file_i, &lentar);
+      if (l < 1){
+        l = 7;
+      }
+      for (int lenkey = 3; lenkey <= l; ++lenkey) {
+        C3(lenkey, lentar, tar);
+      }
       break;
-      //TODO for 3 -> 7 into fonction de cassage C3.1
-    case 311:
-      break;
-      //TODO Fonction de cassage C3.1
     case -1:
       fprintf(stderr,"Fin du programme.\n");
           exit(-1);
@@ -166,11 +180,14 @@ void option(int argc, char** argv){
 
 
 int main(int argc, char **argv) {
-  option(argc, argv);/*
+  //option(argc, argv);
   byte* test;
   int nb = 0;
-  FILE* file = fopen("../../tests/crypted/df9_bovary-isolatin1.txt", "r");
+  FILE* file = fopen("../../tests/crypted/df9_mini.txt", "r");
   test = copyfile(file, &nb);
-  C3(3, nb, test);*/
+  C3(3, nb, test);
+  //byte key[] = "Ba5";
+  //xorcipher(3, key, nb, test);
+  //printf("\n%s", test);
   return 0;
 }

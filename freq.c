@@ -56,6 +56,9 @@ int index_lettre(byte carac){
     case 212 ...214:
     case 244 ...246:
       return 14;
+    case 199:
+    case 231:
+      return 2;
     default:
       return 27;
   }
