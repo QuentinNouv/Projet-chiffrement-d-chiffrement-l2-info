@@ -43,7 +43,7 @@ int VerifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file,
       if (!(strcmp(m, "1"))) choix = 10;
       else if (!(strcmp(m, "2"))) choix = 20;
       else if (!(strcmp(m, "3.1"))) choix = 31;
-      else if (!(strcmp(m, "3.2"))) choix = 32;
+      else if (!(strcmp(m, "3"))) choix = 32;
       else {
         fprintf(stderr, "ERROR : Le critère de cassage du  chiffrage est incorrect.\n");
         return -1;
@@ -57,6 +57,7 @@ int VerifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file,
         if (l < 1) {
           fprintf(stderr, "ERROR : Si vous ne spécifiez pas de valeurs pour -m 32 la valeurs 7 est prise par reférence.\n");
         }
+        return choix;
       }else if (l > 0) {
         ++choix;
         return choix;
@@ -89,7 +90,7 @@ void LancementOption(int mode, char*  i, char* o, byte* k, int l){
       file_i = fopen(i, "r");
       tar = copyfile(file_i, &lentar);
       for (int lenkey = 3; lenkey < 8 ; ++lenkey) {
-        printf("Solution pour les clé de longueur %d : \n", lenkey);
+        //printf("Solution pour les clé de longueur %d : \n", lenkey);
         C1(lenkey, lentar, tar);
       }
     case 11:
@@ -185,8 +186,12 @@ int main(int argc, char **argv) {
   /*byte* test;
   int nb = 0;
   int nb_mot;
-  FILE* file = fopen("../../tests/decrypted/df9_mini.txt", "r");
+  byte key[] = "aBbdN";
+  FILE* file = fopen("../../tests/crypted_crack/adijd_mini.txt", "r");
   test = copyfile(file, &nb);
+  fclose(file);
+  xorcipher(5, key, nb, test);
+  printf("%s  |||||\n", test);
   byte** mot = parsing_prof(nb, test, &nb_mot);
   for (int i = 0; i < nb_mot; ++i) {
     printf("%s ", mot[i]);

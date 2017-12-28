@@ -40,7 +40,7 @@ unsigned long int hash_mot(byte* word){
 bool* hash_dico(byte** dico){
   bool* hashed_dico = (bool*) calloc(4294967296, sizeof(bool));
   for (int i = 0; i < 336531; ++i) {
-    if (strlen((const char *) dico[i]) < 4){
+    if (strlen((const char *) dico[i]) < 5){
       hashed_dico[hash_mot(dico[i])] = true;
     }
   }
@@ -101,7 +101,7 @@ bool LettreMotDebut(byte carac){
 }
 
 bool isseparator(const char c){
-  return (c == 32 || c == 33 || c == 59 || c == 44 || c == 46 || c == 58 || c == 63 || c == 10);
+  return (c == 32 || c == 33 || c == 44 || c == 46 || c == 63 || c == 10);
 }
 
 byte** parsing_prof(int lentar, byte* tar, int* nb){
@@ -109,7 +109,7 @@ byte** parsing_prof(int lentar, byte* tar, int* nb){
   int ind_mot = 0;
   int ind_curseur = 0;
   int taille_mot = 30;
-  int test = 0;
+  int taille_current_mot = 0;
   byte* mot = NULL;
   byte** liste_mot = (byte**) malloc(taille_liste_mot* sizeof(byte*));
   for (int i = 0; i < lentar; ++i) {
@@ -124,24 +124,20 @@ byte** parsing_prof(int lentar, byte* tar, int* nb){
         mot = (byte*) realloc(mot, taille_mot* sizeof(byte));
 
       }
-      if (isupper(tar[i++])){
-        free(mot);
-        ind_curseur = 0;
-        while (!isseparator(tar[i++]));
-      }else if (isseparator(tar[i]) || isupper(tar[i])){
-        test = (int) strlen((const char *) mot);
+      if (isseparator(tar[i])){
+        taille_current_mot = (int) strlen((const char *) mot);
         //printf("%d \n", test);
         liste_mot[ind_mot++] = mot;
         ind_curseur = 0;
         taille_mot = 30;
-        if (test > 4){
+        if (taille_current_mot > 4 || taille_current_mot < 2){
           liste_mot[--ind_mot] = NULL;
         }
       }else {
-        mot[ind_curseur++] = (byte) tolower(tar[i]);
+        mot[ind_curseur++] = (byte) tar[i];
       }
     }
-    if (ind_mot+2 > taille_liste_mot){
+    if (ind_mot+2 >= taille_liste_mot){
       taille_liste_mot += 10;
       liste_mot = (byte**) realloc(liste_mot, taille_liste_mot*sizeof(byte*));
     }
@@ -195,8 +191,8 @@ byte** ParsingTar(int lentar, byte* tar, int* nb){
   return liste_mot;
 }
 
-bool verif_dico(unsigned long int i, bool* hash_dico){
-  return hash_dico[i];
+bool verif_dico(unsigned long int i, bool* hashed_dico){
+  return hashed_dico[i];
 }
 
 int text_score(byte** liste_mot, int nb_mot, bool* hash_dico){
@@ -210,13 +206,14 @@ int text_score(byte** liste_mot, int nb_mot, bool* hash_dico){
   return score;
 }
 
+
 int C3(int lenkey, int lentar, byte* tar){
   int nb;
   int nb_mot_cle = 0;
   int score = 0;
-  int current_best_score = 0;
-  byte* current_best_key = NULL;
+  int current_best_score = -1;
   byte* current_text;
+  byte* current_best_key = NULL;
   byte** liste_key = buildkey(lenkey, lentar, tar, &nb);
   if (liste_key == NULL) return 1;
   byte** dico = RemplirDico();
@@ -230,7 +227,7 @@ int C3(int lenkey, int lentar, byte* tar){
       printf("%s ", liste_mot[j]);
     }*/
     score = text_score(liste_mot, nb_mot_cle, hashed_dico);
-    //printf("%d %d\n", current_best_score, score);
+    //printf("%d %s\n", nb_mot_cle, liste_key[i]);
     if (score > current_best_score){
       current_best_score = score;
       current_best_key = liste_key[i];
@@ -238,7 +235,10 @@ int C3(int lenkey, int lentar, byte* tar){
     free(current_text);
     libDoublePointeur(liste_mot, nb_mot_cle);
   }
-  printf("%s\n", current_best_key);
+  for (int j = 0; j < lenkey; ++j) {
+    printf("%c", current_best_key[j]);
+  }
+  printf("\n");
   libDoublePointeur(liste_key, nb);
   free(hashed_dico);
   return 0;

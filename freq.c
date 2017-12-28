@@ -112,7 +112,10 @@ int C2(int lenkey, int lentar, byte* tar){
     //printf("]\n%s %s %f %f \n", liste_key[i], temp_key, temp_min_prox, temp_prox);
     free(current_text);
   }
-  printf("%s\n", temp_key);
+  for (int j = 0; j < lenkey; ++j) {
+    printf("%c", temp_key[j]);
+  }
+  printf("\n");
   libDoublePointeurFLoat(tab_freq, nb);
   libDoublePointeur(liste_key, nb);
   return 0;

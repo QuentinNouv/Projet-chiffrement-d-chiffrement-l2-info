@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include "types.h"
 
-const byte keyCharlist[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ,-.:?_abcdefghijklmnopqrstuvwxyz{}";
+const byte keyCharlist[] = ".0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ,-:?_abcdefghijklmnopqrstuvwxyz{}";
 const int lenkeyCharList = 70;
 bool ValidTextChar(byte text){
   return ((text == 32) || (text >= 65 && text <= 90) || (text >= 97 && text <= 122)
@@ -123,6 +124,11 @@ byte** buildkey(int lenkey, int lentar, byte *tar,int* nb){
 
 void C1(int lenkey, int lentar, byte* tar){
   byte** list_char = keygen(lenkey, lentar, tar);
+  for (int i = 0; i < lenkey; ++i) {
+    if (strlen((const char *) list_char[i]) == 0) {
+      return;
+    }
+  }
   for (int i = 0; i < lenkey; ++i) {
     printf("[");
     for (int j = 0; list_char[i][j]!='\0'; ++j) {
