@@ -2,7 +2,22 @@
 #include <stdlib.h>
 #include "types.h"
 
-/*void xorcipher(int lenkey, const byte *key, int lentar, byte *tar){
+/*void xorcipher(int lenkey, const byte* key, int lentar, byte* tar){
+ /*********************************************************
+ *                                                        *
+ * FUNCTION NAME: xorcipher                               *
+ *                                                        *
+ * ARGUMENTS: void, change direct les str passer en arg   *
+ *                                                        *
+ * ARGUMENT TYPE  I/O DESCRIPTION                         *
+ * lenkey   int   I   Longueur de la clé                  *
+ * key      byte* I   Clé                                 *
+ * lenkey   int   I   Longueur de la texte d'entrée       *
+ * tar      byte* I/O Texte a tranformer                  *
+ *                                                        *
+ * RETURNS: Rien                                          *
+ *                                                        *
+ ********************************************************* /
   for (int i = 0; i < lentar; ++i) {
     tar[i] ^= key[i%lenkey];
   }

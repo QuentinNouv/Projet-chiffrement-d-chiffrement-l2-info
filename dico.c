@@ -8,7 +8,6 @@
 #include "types.h"
 #include "valid.h"
 #include "cipher.h"
-#include "dictionnaire.h"
 
 //const byte DICO[] = "dictionnaire.txt";
 //const int nbMot = 336531;
@@ -42,9 +41,11 @@ unsigned long int hash_mot(byte* word){
 }
 
 bool* hash_dico(){
+  unsigned long i;
+  FILE* dico = fopen("dico.txt", "r");
   bool* hashed_dico = (bool*) calloc(4294967296, sizeof(bool));
-  for (int i = 0; i < nb_hashed_value; ++i) {
-    hashed_dico[hashed_value[i]] = true;
+  while (fscanf(dico, "%lu", &i) != EOF){
+    hashed_dico[i] = true;
   }
   return hashed_dico;
 }
