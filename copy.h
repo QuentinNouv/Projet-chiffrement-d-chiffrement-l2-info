@@ -5,6 +5,9 @@
 #ifndef C_COPY_H
 #define C_COPY_H
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "types.h"
 
 byte* copyfile(FILE* file, int *lentar);

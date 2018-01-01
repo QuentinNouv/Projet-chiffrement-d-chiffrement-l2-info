@@ -2,15 +2,26 @@
 // Created by Quentin Nouvel on 28/11/2017.
 //
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
-#include "types.h"
+#include "valid.h"
 
 const byte keyCharlist[] = ",-.0123456789:?ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz{}";
 const int lenkeyCharList = 70;
-bool ValidTextChar(byte text){
+
+/************************************************************
+ *                                                          *
+ * FUNCTION NAME: valid_text_char                           *
+ *                                                          *
+ * ARGUMENTS:                                               *
+ *                                                          *
+ * ARGUMENT TYPE  I/O DESCRIPTION                           *
+ * ________ _____ ___ ______________________                *
+ * text     byte  I   Caractère d'un message                *
+ *                                                          *
+ * RETURNS: Vérifie que le caractère est un caractère       *
+ *          possible de message.                            *
+ *                                                          *
+ ***********************************************************/
+bool valid_text_char(byte text){
   return ((text == 32) || (text >= 65 && text <= 90) || (text >= 97 && text <= 122)
 //Pontuations Only messages
 || (text == 33) || (text == 34) || (text == 39) || (text == 40) || (text == 41) || (text == 59)
@@ -33,54 +44,125 @@ bool ValidTextChar(byte text){
 || (text == 10));
 }
 
-bool ValidKeyChar(byte key){
-  if (
-  //Majuscules, Minuscules
-  (key>=65 && key<=90) || (key>=97 && key<=122)
-  //Ponctuations clé & messages
-  || (key == 44) || (key == 45) || (key == 46) || (key == 58) || (key == 63) || (key == 95) || (key == 123) || (key == 125)
-  //Nombres
-  || (key>47 && key<58)){
-    return true;
-  }
-  return false;
+/************************************************************
+ *                                                          *
+ * FUNCTION NAME: valid_key_char                            *
+ *                                                          *
+ * ARGUMENTS:                                               *
+ *                                                          *
+ * ARGUMENT TYPE  I/O DESCRIPTION                           *
+ * ________ _____ ___ ___________________                   *
+ * key      byte  I   Caractère d'une clé                   *
+ *                                                          *
+ * RETURNS: Vérifie que le caractère est un caractère       *
+ *          possible de clé.                                *
+ *                                                          *
+ ***********************************************************/
+bool valid_key_char(byte key){
+  return (key>=65 && key<=90) || (key>=97 && key<=122)//Majuscules, Minuscules
+  || (key == 44) || (key == 45) || (key == 46) || (key == 58) || (key == 63) || (key == 95) || (key == 123) || (key == 125)//Ponctuations clé & messages
+  || (key>47 && key<58);//Nombres
 }
 
-bool IskeyValid(byte* key, int lenkey){
+/************************************************************
+ *                                                          *
+ * FUNCTION NAME: is_key_valid                              *
+ *                                                          *
+ * ARGUMENTS:                                               *
+ *                                                          *
+ * ARGUMENT TYPE  I/O DESCRIPTION                           *
+ * ________ _____ ___ __________________                    *
+ * key      byte* I   Clé                                   *
+ * lenkey   int   I   Longueur de la clé                    *
+ *                                                          *
+ * RETURNS: Vérifie que la clé est valide                   *
+ *                                                          *
+ ***********************************************************/
+bool is_key_valid(byte* key, int lenkey){
   int i = 0;
   bool res = true;
   while (i< lenkey && res){
-    res = ValidKeyChar(key[i++]);
+    res = valid_key_char(key[i++]);
   }
   return res;
 }
 
-void libDoublePointeur(byte** pointeur, int lenPointeur) {
-  for (int i = 0; i < lenPointeur; i++) {
+/********************************************************************
+ *                                                                  *
+ * FUNCTION NAME: lib_double_pointeur                               *
+ *                                                                  *
+ * ARGUMENTS:                                                       *
+ *                                                                  *
+ * ARGUMENT     TYPE   I/O DESCRIPTION                              *
+ * ____________ ______ ___ ________________________________________ *
+ * pointeur     byte** I   Adresse de la liste de pointeur a libéré *
+ * len_pointeur int    I   Nombre d'element de la liste             *
+ *                                                                  *
+ * RETURNS: Libère un double pointeur.                              *
+ *                                                                  *
+ *******************************************************************/
+void lib_double_pointeur(byte** pointeur, int len_pointeur) {
+  for (int i = 0; i < len_pointeur; i++) {
     free(pointeur[i]);
   }
   free(pointeur);
 }
 
-bool IsKeyCharOk(const byte *tar, int lentar, byte keyChar, int indkey, int lenkey){
+/********************************************************************
+ *                                                                  *
+ * FUNCTION NAME: is_key_char_ok                                    *
+ *                                                                  *
+ * ARGUMENTS:                                                       *
+ *                                                                  *
+ * ARGUMENT TYPE  I/O DESCRIPTION                                   *
+ * ________ _____ ___ __________________________________            *
+ * tar      byte* I   Chaîne de caractère                           *
+ * lentar   int   I   Longueur de la chaîne de caractère            *
+ * keychar  byte  I   Caractère de clé que l'on vérifie             *
+ * ind_key  int   I   Indice de keychar dans la clé                 *
+ * lenkey   int   I   Longueur de la clé                            *
+ *                                                                  *
+ * RETURNS: Vérifie qu'un caractère a un indicé précis de la clé    *
+ *          donne des caractère valide pour tous les caractère      *
+ *          qu'il déchiffreras.                                     *
+ *                                                                  *
+ *******************************************************************/
+bool is_key_char_ok(const byte* tar, int lentar, byte key_char, int ind_key, int lenkey){
   byte temp;
-  for (int i = indkey; i < lentar; i+=lenkey) {
-    temp = tar[i] ^ keyChar;
-    if (!ValidTextChar(temp)) {
+  for (int i = ind_key; i < lentar; i+=lenkey) {
+    temp = tar[i] ^ key_char;
+    if (!valid_text_char(temp)) {
       return false;
     }
   }
   return true;
 }
 
-byte** keygen(int lenkey, int lentar, byte *tar){
+/************************************************************
+ *                                                          *
+ * FUNCTION NAME: keygen                                    *
+ *                                                          *
+ * ARGUMENTS:                                               *
+ *                                                          *
+ * ARGUMENT TYPE  I/O DESCRIPTION                           *
+ * ________ _____ ___ ____________                          *
+ * lenkey   int   I   Longueur de clé recherché             *
+ * lentar   int   I   Longueur du texte a déchiffrer        *
+ * tar      byte* I   Texte qu'on cherche a déchiffrer      *
+ *                                                          *
+ * RETURNS: Génère pour chaque indice de clé la liste des   *
+ *          caractères qui donnerons une valeurs de         *
+ *          caractère de message valide après déchiffrage   *
+ *                                                          *
+ ***********************************************************/
+byte** keygen(int lenkey, int lentar, byte* tar){
   byte** tab_key = (byte**) malloc(lenkey*sizeof(byte*));
   int nb_char;
   for (int i = 0; i < lenkey; i++) {
     nb_char = 0;
     tab_key[i] = (byte*) malloc((lenkeyCharList+1)*sizeof(byte));
     for (int j = 0; j < lenkeyCharList; j++) {
-      if (IsKeyCharOk(tar, lentar, keyCharlist[j], i, lenkey)) {
+      if (is_key_char_ok(tar, lentar, keyCharlist[j], i, lenkey)) {
         tab_key[i][nb_char] = keyCharlist[j];
         ++nb_char;
       }
@@ -90,12 +172,30 @@ byte** keygen(int lenkey, int lentar, byte *tar){
   return tab_key;
 }
 
+/************************************************************
+ *                                                          *
+ * FUNCTION NAME: buildkey                                  *
+ *                                                          *
+ * ARGUMENTS:                                               *
+ *                                                          *
+ * ARGUMENT TYPE  I/O DESCRIPTION                           *
+ * ________ _____ ___ ____________                          *
+ * lenkey   int   I   Longueur de clé recherché             *
+ * lentar   int   I   Longueur du texte a déchiffrer        *
+ * tar      byte* I   Texte qu'on cherche a déchiffrer      *
+ * nb       int*    O Nombre de clé généré                  *
+ *                                                          *
+ * RETURNS: Génère toutes les clé possible avec les liste   *
+ *          caractère généré par keygen.                    *
+ *                                                          *
+ ***********************************************************/
 byte** buildkey(int lenkey, int lentar, byte *tar,int* nb){
   byte** tab_key = keygen(lenkey, lentar, tar);
   int nb_key = 1;
   int nb_char[lenkey];
   int diviseur[lenkey];
   for (int i = 0; i < lenkey; i++) {
+    // Calcule le nombre de caractère dans chaque liste.
     nb_char[i] = 0;
     for (int j = 0; tab_key[i][j]!='\0'; j++) {
       ++nb_char[i];
@@ -104,6 +204,7 @@ byte** buildkey(int lenkey, int lentar, byte *tar,int* nb){
     nb_key *= nb_char[i];
   }
   for (int i = 0; i < lenkey; i++) {
+    // Calcule le nombre de fois que chaque indice va être répéter d'affilé.
     if (i==0) {
       diviseur[0] = nb_key/nb_char[0];
     } else {
@@ -118,15 +219,31 @@ byte** buildkey(int lenkey, int lentar, byte *tar,int* nb){
       key[i][j] = tab_key[j][(i/diviseur[j])%nb_char[j]];
     }
   }
-  libDoublePointeur(tab_key, lenkey);
+  lib_double_pointeur(tab_key, lenkey);
   return key;
 }
 
-void C1(int lenkey, int lentar, byte* tar){
+/************************************************************
+ *                                                          *
+ * FUNCTION NAME: C1                                        *
+ *                                                          *
+ * ARGUMENTS:                                               *
+ *                                                          *
+ * ARGUMENT TYPE  I/O DESCRIPTION                           *
+ * ________ _____ ___ ____________                          *
+ * lenkey   int   I   Longueur de clé recherché             *
+ * lentar   int   I   Longueur du texte a déchiffrer        *
+ * tar      byte* I   Texte qu'on cherche a déchiffrer      *
+ *                                                          *
+ * RETURNS: Printf les listes de caractères valide pour     *
+ *          pour chaque caractère de la clé.                *
+ *                                                          *
+ ***********************************************************/
+int C1(int lenkey, int lentar, byte* tar){
   byte** list_char = keygen(lenkey, lentar, tar);
   for (int i = 0; i < lenkey; ++i) {
     if (strlen((const char *) list_char[i]) == 0) {
-      return;
+      return 1;
     }
   }
   for (int i = 0; i < lenkey; ++i) {
@@ -136,6 +253,9 @@ void C1(int lenkey, int lentar, byte* tar){
     }
     printf("]");
   }
-  printf("\n");
-  libDoublePointeur(list_char, lenkey);
+  if(lenkey < 8){
+    printf("\n");
+  }
+  lib_double_pointeur(list_char, lenkey);
+  return 0;
 }

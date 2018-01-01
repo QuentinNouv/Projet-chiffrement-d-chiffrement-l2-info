@@ -2,10 +2,22 @@
 // Created by Quentin Nouvel on 29/11/2017.
 //
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "types.h"
+#include "copy.h"
 
+/************************************************************
+ *                                                          *
+ * FUNCTION NAME: copyfile                                  *
+ *                                                          *
+ * ARGUMENTS:                                               *
+ *                                                          *
+ * ARGUMENT TYPE  I/O DESCRIPTION                           *
+ * ________ _____ ___ ______________________________________*
+ * file     FILE* I   Fichier d'entrée préalablement ouvert *
+ * lentar   int*    O Nombre d'octets de données            *
+ *                                                          *
+ * RETURNS: byte* du contenue du fichier                    *
+ *                                                          *
+ ***********************************************************/
 byte* copyfile(FILE* file, int* lentar){
   int taille = 500;
   int i = 0;
@@ -16,8 +28,7 @@ byte* copyfile(FILE* file, int* lentar){
       taille += 100;
       copy = (byte*)realloc(copy, taille*sizeof(byte));
     }
-    copy[i] = c;
-    i++;
+    copy[i++] = c;
   }
   copy[i] = (byte)"\0";
   *lentar = i;

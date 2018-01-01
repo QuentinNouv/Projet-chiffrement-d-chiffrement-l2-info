@@ -6,11 +6,14 @@
 #define C_FREQ_H
 
 #include <math.h>
+
 #include "types.h"
 #include "valid.h"
 #include "cipher.h"
 
-void libDoublePointeurFLoat(float** pointeur, int lenPointeur);
-void C2(int lenkey, int lentar, byte* tar);
+#define Nb_L_Alphabet 26
+
+void lib_double_pointeur_float(float** pointeur, int lenPointeur);
+int C2(int lenkey, int lentar, byte* tar);
 
 #endif //C_FREQ_H

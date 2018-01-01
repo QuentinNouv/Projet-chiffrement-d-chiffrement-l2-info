@@ -5,10 +5,14 @@
 #ifndef C_DICO_H
 #define C_DICO_H
 
+#include <ctype.h>
+#include <memory.h>
+#include <math.h>
+
 #include "types.h"
 #include "valid.h"
 #include "cipher.h"
 
-void C3(int lenkey, int lentar, byte* tar);
+int C3(int lenkey, int lentar, byte* tar);
 
 #endif //C_DICO_H
