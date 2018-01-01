@@ -1,9 +1,11 @@
 //
 // Created by Quentin Nouvel on 29/11/2017.
 //
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "types.h"
+
 byte* copyfile(FILE* file, int* lentar){
   int taille = 500;
   int i = 0;

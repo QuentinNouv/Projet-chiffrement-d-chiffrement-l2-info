@@ -10,7 +10,6 @@
 #include "freq.h"
 #include "dico.h"
 
-
 int VerifOptions(char* i, char* o, byte* k, long l, const char* m, FILE* i_file, FILE* o_file){
   // Return -1 si pas bon
   if (i != NULL){
@@ -183,21 +182,5 @@ void option(int argc, char** argv){
 
 int main(int argc, char **argv) {
   option(argc, argv);
-  /*byte* test;
-  int nb = 0;
-  int nb_mot;
-  byte key[] = "aBbdN";
-  FILE* file = fopen("../../tests/crypted_crack/adijd_mini.txt", "r");
-  test = copyfile(file, &nb);
-  fclose(file);
-  xorcipher(5, key, nb, test);
-  printf("%s  |||||\n", test);
-  byte** mot = parsing_prof(nb, test, &nb_mot);
-  for (int i = 0; i < nb_mot; ++i) {
-    printf("%s ", mot[i]);
-  }*/
-  //byte key[] = "Ba5";
-  //xorcipher(3, key, nb, test);
-  //printf("\n%s", test);*/
   return 0;
 }

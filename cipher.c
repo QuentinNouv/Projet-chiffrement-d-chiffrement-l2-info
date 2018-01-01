@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include "types.h"
 
-void xorcipher(int lenkey, const byte *key, int lentar, byte *tar){
+/*void xorcipher(int lenkey, const byte *key, int lentar, byte *tar){
   for (int i = 0; i < lentar; ++i) {
     tar[i] ^= key[i%lenkey];
   }
-}
+}*/
 
 byte* XorcipherCopy(int lenkey, const byte *key, int lentar, const byte *tar){
   byte* res = (byte*) malloc(lentar* sizeof(byte));

@@ -1,10 +1,14 @@
+//
+// Created by Quentin Nouvel on 28/11/2017.
+//
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
 #include "types.h"
 
-const byte keyCharlist[] = ".0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ,-:?_abcdefghijklmnopqrstuvwxyz{}";
+const byte keyCharlist[] = ",-.0123456789:?ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz{}";
 const int lenkeyCharList = 70;
 bool ValidTextChar(byte text){
   return ((text == 32) || (text >= 65 && text <= 90) || (text >= 97 && text <= 122)
@@ -85,10 +89,6 @@ byte** keygen(int lenkey, int lentar, byte *tar){
   }
   return tab_key;
 }
-
-/*
- * Fonctions pour String
- */
 
 byte** buildkey(int lenkey, int lentar, byte *tar,int* nb){
   byte** tab_key = keygen(lenkey, lentar, tar);
