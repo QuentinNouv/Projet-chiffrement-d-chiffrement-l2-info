@@ -13,6 +13,6 @@
 #include "valid.h"
 #include "cipher.h"
 
-int C3(int lenkey, int lentar, byte* tar);
+int C3(int lenkey, int lentar, byte *tar);
 
 #endif //C_DICO_H

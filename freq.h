@@ -13,7 +13,8 @@
 
 #define Nb_L_Alphabet 26
 
-void lib_double_pointeur_float(float** pointeur, int lenPointeur);
-int C2(int lenkey, int lentar, byte* tar);
+void lib_double_pointeur_float(float **pointeur, int lenPointeur);
+
+int C2(int lenkey, int lentar, byte *tar);
 
 #endif //C_FREQ_H

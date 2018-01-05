@@ -10,6 +10,6 @@
 
 #include "types.h"
 
-byte* copyfile(FILE* file, int *lentar);
+byte *copyfile(FILE *file, int *lentar);
 
 #endif //C_COPY_H

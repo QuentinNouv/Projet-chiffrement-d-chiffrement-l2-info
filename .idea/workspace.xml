@@ -11,24 +11,19 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f82cf10-2226-42bb-b791-e2ad88a05a4b" name="Default" comment="Correction d'une warning, ajout de scripts de tests et de mesures de temps d'éxécution.">
+    <list default="true" id="4f82cf10-2226-42bb-b791-e2ad88a05a4b" name="Default" comment="Reformat du code.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/benchmark.sh" afterPath="$PROJECT_DIR$/benchmark.sh" />
+      <change beforePath="$PROJECT_DIR$/cipher.c" afterPath="$PROJECT_DIR$/cipher.c" />
+      <change beforePath="$PROJECT_DIR$/cipher.h" afterPath="$PROJECT_DIR$/cipher.h" />
+      <change beforePath="$PROJECT_DIR$/copy.c" afterPath="$PROJECT_DIR$/copy.c" />
+      <change beforePath="$PROJECT_DIR$/copy.h" afterPath="$PROJECT_DIR$/copy.h" />
       <change beforePath="$PROJECT_DIR$/dico.c" afterPath="$PROJECT_DIR$/dico.c" />
+      <change beforePath="$PROJECT_DIR$/dico.h" afterPath="$PROJECT_DIR$/dico.h" />
+      <change beforePath="$PROJECT_DIR$/freq.c" afterPath="$PROJECT_DIR$/freq.c" />
+      <change beforePath="$PROJECT_DIR$/freq.h" afterPath="$PROJECT_DIR$/freq.h" />
       <change beforePath="$PROJECT_DIR$/main.c" afterPath="$PROJECT_DIR$/main.c" />
-      <change beforePath="$PROJECT_DIR$/makefile" afterPath="$PROJECT_DIR$/makefile" />
-      <change beforePath="$PROJECT_DIR$/test_crack_wo_echo.sh" afterPath="$PROJECT_DIR$/test_crack_wo_echo.sh" />
-      <change beforePath="$PROJECT_DIR$/tests/keys0/adijd_bovary-isolatin1.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/tests/keys0/adijd_mini.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/tests/keys0/df9_bovary-isolatin1.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/tests/keys0/df9_mini.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/tests/keys1/adijd_bovary-isolatin1.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/tests/keys1/adijd_mini.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/tests/keys1/df9_bovary-isolatin1.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/tests/keys1/df9_mini.txt" afterPath="" />
       <change beforePath="$PROJECT_DIR$/valid.c" afterPath="$PROJECT_DIR$/valid.c" />
       <change beforePath="$PROJECT_DIR$/valid.h" afterPath="$PROJECT_DIR$/valid.h" />
-      <change beforePath="$PROJECT_DIR$/xorcipher" afterPath="$PROJECT_DIR$/xorcipher" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/freq.c">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="65" column="15" lean-forward="false" selection-start-line="65" selection-start-column="15" selection-end-line="65" selection-end-column="15" />
+              <caret line="66" column="21" lean-forward="false" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -67,18 +62,18 @@
       <file leaf-file-name="cipher.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cipher.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="83" column="3" lean-forward="false" selection-start-line="83" selection-start-column="3" selection-end-line="83" selection-end-column="3" />
+            <state relative-caret-position="1245">
+              <caret line="83" column="45" lean-forward="false" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dico.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dico.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dico.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="325" column="10" lean-forward="false" selection-start-line="325" selection-start-column="10" selection-end-line="325" selection-end-column="10" />
+            <state relative-caret-position="918">
+              <caret line="284" column="4" lean-forward="false" selection-start-line="284" selection-start-column="4" selection-end-line="284" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -88,17 +83,17 @@
         <entry file="file://$PROJECT_DIR$/valid.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="18" column="65" lean-forward="false" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
+              <caret line="21" column="65" lean-forward="false" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="65" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="242" column="30" lean-forward="false" selection-start-line="242" selection-start-column="30" selection-end-line="242" selection-end-column="30" />
+            <state relative-caret-position="579">
+              <caret line="60" column="4" lean-forward="true" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -142,9 +137,9 @@
         <option value="$PROJECT_DIR$/freq.h" />
         <option value="$PROJECT_DIR$/freq.c" />
         <option value="$PROJECT_DIR$/valid.h" />
-        <option value="$PROJECT_DIR$/main.c" />
         <option value="$PROJECT_DIR$/valid.c" />
         <option value="$PROJECT_DIR$/dico.c" />
+        <option value="$PROJECT_DIR$/main.c" />
       </list>
     </option>
   </component>
@@ -289,7 +284,7 @@
       <workItem from="1514816821720" duration="15134000" />
       <workItem from="1514835538033" duration="10834000" />
       <workItem from="1514859451525" duration="1187000" />
-      <workItem from="1514865485916" duration="19606000" />
+      <workItem from="1514865485916" duration="20298000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout de la gestion d'options en entrée">
       <created>1511359314829</created>
@@ -424,11 +419,18 @@
       <option name="project" value="LOCAL" />
       <updated>1515118836848</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Optimisation du temps d'éxécution de la recherche par dictionnaire.">
+      <created>1515118984609</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1515118984609</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242228000" />
+    <option name="totallyTimeSpent" value="242920000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -441,12 +443,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1680" height="954" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13614164" sideWeight="0.49305555" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31897557" sideWeight="0.49642858" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31897557" sideWeight="0.49642858" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39813736" sideWeight="0.50416666" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32951945" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282887" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18681319" sideWeight="0.49761903" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15672092" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -458,7 +462,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32951945" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
     </layout>
@@ -506,9 +509,9 @@
     <MESSAGE value="Ajout du dictionnaire pré-hashé." />
     <MESSAGE value="Ajout de commentaire." />
     <MESSAGE value="Correction d'une warning, ajout de scripts de tests et de mesures de temps d'éxécution." />
-    <option name="LAST_COMMIT_MESSAGE" value="Correction d'une warning, ajout de scripts de tests et de mesures de temps d'éxécution." />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="Optimisation du temps d'éxécution de la recherche par dictionnaire." />
+    <MESSAGE value="Reformat du code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reformat du code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -844,7 +847,7 @@
     <entry file="file://$PROJECT_DIR$/valid.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="18" column="65" lean-forward="false" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
+          <caret line="21" column="65" lean-forward="false" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="65" />
           <folding />
         </state>
       </provider>
@@ -857,26 +860,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="242" column="30" lean-forward="false" selection-start-line="242" selection-start-column="30" selection-end-line="242" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/freq.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="65" column="15" lean-forward="false" selection-start-line="65" selection-start-column="15" selection-end-line="65" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cipher.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="83" column="3" lean-forward="false" selection-start-line="83" selection-start-column="3" selection-end-line="83" selection-end-column="3" />
+          <caret line="66" column="21" lean-forward="false" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -891,8 +878,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dico.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="325" column="10" lean-forward="false" selection-start-line="325" selection-start-column="10" selection-end-line="325" selection-end-column="10" />
+        <state relative-caret-position="918">
+          <caret line="284" column="4" lean-forward="false" selection-start-line="284" selection-start-column="4" selection-end-line="284" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cipher.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1245">
+          <caret line="83" column="45" lean-forward="false" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="60" column="4" lean-forward="true" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
           <folding />
         </state>
       </provider>

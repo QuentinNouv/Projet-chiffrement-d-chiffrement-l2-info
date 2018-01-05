@@ -12,9 +12,12 @@
 #include "types.h"
 
 bool is_key_valid(byte *key, int lenkey);
-byte** buildkey(int lenkey, int lentar, byte *tar,int* nb);
-void lib_double_pointeur(byte** pointeur, int len_pointeur);
-int C1(int lenkey, int lentar, byte* tar);
+
+byte **buildkey(int lenkey, int lentar, byte *tar, int *nb);
+
+void lib_double_pointeur(byte **pointeur, int len_pointeur);
+
+int C1(int lenkey, int lentar, byte *tar);
 
 byte **buildkey_opti(int lenkey, int lentar, byte *tar, int *nb);
 

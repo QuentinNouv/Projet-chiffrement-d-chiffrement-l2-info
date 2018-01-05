@@ -39,12 +39,12 @@
  * RETURNS: byte* de tar chiffré/déchiffré.               *
  *                                                        *
  *********************************************************/
-byte* xorciphercopy(int lenkey, const byte *key, int lentar, const byte *tar){
-  byte* res = (byte*) malloc(lentar* sizeof(byte));
-  for (int i = 0; i < lentar; ++i) {
-    res[i] = tar[i] ^ key[i%lenkey];
-  }
-  return res;
+byte *xorciphercopy(int lenkey, const byte *key, int lentar, const byte *tar){
+	byte *res = (byte *) malloc(lentar * sizeof(byte));
+	for (int i = 0; i < lentar; ++i) {
+		res[i] = tar[i] ^ key[i % lenkey];
+	}
+	return res;
 }
 
 
@@ -68,23 +68,23 @@ byte* xorciphercopy(int lenkey, const byte *key, int lentar, const byte *tar){
  *          chiffré/déchiffré.                            *
  *                                                        *
  *********************************************************/
-int xorcipher2(char* file_i, int* len, char* file_o, int lenkey, const byte* key){
-  FILE* file = fopen(file_i, "r");
-  FILE* sortie = fopen(file_o, "w");
-  *len = 0;
-  if(file == NULL){
-    fprintf(stderr,"ERROR : Fichier %s illisible.", file_i);
-    return 1;
-  }if(sortie == NULL){//Inutile avec "w" :')
-    fprintf(stderr,"ERROR : Fichier %s non éditable.", file_o);
-    return 1;
-  }
-  char c;
-  while ((fscanf(file, "%c", &c)) != EOF)
-  {
-    c ^= key[(*len)%lenkey];
-    fputc(c, sortie);
-    ++(*len);
-  }
-  return 0;
+int xorcipher2(char *file_i, int *len, char *file_o, int lenkey, const byte *key){
+	FILE *file = fopen(file_i, "r");
+	FILE *sortie = fopen(file_o, "w");
+	*len = 0;
+	if (file == NULL) {
+		fprintf(stderr, "ERROR : Fichier %s illisible.", file_i);
+		return 1;
+	}
+	if (sortie == NULL) {//Inutile avec "w" :')
+		fprintf(stderr, "ERROR : Fichier %s non éditable.", file_o);
+		return 1;
+	}
+	char c;
+	while ((fscanf(file, "%c", &c)) != EOF) {
+		c ^= key[(*len) % lenkey];
+		fputc(c, sortie);
+		++(*len);
+	}
+	return 0;
 }
