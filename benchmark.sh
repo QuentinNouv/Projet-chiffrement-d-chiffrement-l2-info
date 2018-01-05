@@ -1,10 +1,10 @@
 #!/bin/sh
 cd tests
-ls | grep "^keys[0-3]*$" | xargs rm -rfmkdir tests/keys0
-mkdir tests/keys0
-mkdir tests/keys1
-mkdir tests/keys2
-mkdir tests/keys3
+ls | grep "^keys[0-3]*$" | xargs rm -rf
+mkdir keys0
+mkdir keys1
+mkdir keys2
+mkdir keys3
 cd ..
 if [ $1 -eq 1 ]
 then

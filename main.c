@@ -240,5 +240,5 @@ int option(int argc, char** argv){
 
 
 int main(int argc, char **argv) {
-  return option(argc, argv);;
+	return option(argc, argv);
 }

@@ -3,7 +3,7 @@ CFLAGS=-Wall
 OBJ=dico.o freq.o copy.o cipher.o valid.o main.o
 
 util:	$(OBJ)
-	$(CC) $(OBJ) $(CFLAGS) -o xorcipher -Ofast
+	$(CC) $(OBJ) $(CFLAGS) -o xorcipher -O3
 
 dico.o: dico.c
 freq.o: freq.c

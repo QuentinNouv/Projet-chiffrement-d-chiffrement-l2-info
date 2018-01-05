@@ -100,6 +100,24 @@ bool* hash_dico(){
   return hashed_dico;
 }
 
+/********************************************************************************
+ *                                                                              *
+ * FUNCTION NAME: verif_dico                                                    *
+ *                                                                              *
+ * ARGUMENTS:                                                                   *
+ *                                                                              *
+ * ARGUMENT     TYPE              I/O DESCRIPTION                               *
+ * ___________  _________________ ___ ________________________________________  *
+ * i            unsigned long int I   Indice de la table de hashage a vérifier  *
+ * hashed_dico  bool*             I   Table de hashage                          *
+ *                                                                              *
+ * RETURNS: Présence du mot dans le dictionnaire.                               *
+ *                                                                              *
+ ********************************************************************************/
+bool verif_dico(unsigned long int i, bool *hashed_dico) {
+	return hashed_dico[i];
+}
+
 /************************************************************
  *                                                          *
  * FUNCTION NAME: isseparator                               *
@@ -114,7 +132,18 @@ bool* hash_dico(){
  *                                                          *
  ***********************************************************/
 bool is_separator(const char c){
-  return (c == 32 || c == 33 || c == 44 || c == 46 || c == 63 || c == 10);
+	switch (c) {
+		case 32:
+		case 33:
+		case 44:
+		case 46:
+		case 63:
+		case 10:
+			return true;
+		default:
+			return false;
+	}
+	//return (c == 32 || c == 33 || c == 44 || c == 46 || c == 63 || c == 10);
 }
 
 /************************************************************
@@ -175,22 +204,29 @@ byte** parsing_prof(int lentar, byte* tar, int* nb){
   return liste_mot;
 }
 
-/********************************************************************************
- *                                                                              *
- * FUNCTION NAME: verif_dico                                                    *
- *                                                                              *
- * ARGUMENTS:                                                                   *
- *                                                                              *
- * ARGUMENT     TYPE              I/O DESCRIPTION                               *
- * ___________  _________________ ___ ________________________________________  *
- * i            unsigned long int I   Indice de la table de hashage a vérifier  *
- * hashed_dico  bool*             I   Table de hashage                          *
- *                                                                              *
- * RETURNS: Présence du mot dans le dictionnaire.                               *
- *                                                                              *
- ********************************************************************************/
-bool verif_dico(unsigned long int i, bool* hashed_dico){
-  return hashed_dico[i];
+int parse_et_score(int lentar, byte *tar, bool *hashed_dico) {
+	int score = 0;
+	int taille_mot = 0;
+	const int taille_max_mot = 4;
+	byte mot[taille_max_mot + 1];
+	for (int i = 0; i < lentar; ++i) {
+		if(is_separator(tar[i])) {
+			switch (taille_mot) {
+				case 2 ... taille_max_mot:
+					mot[taille_mot] = '\0';
+					mot[0] = (byte) tolower(mot[0]);
+					score += verif_dico(hash_mot(mot), hashed_dico);
+				default:
+					taille_mot = 0;
+			}
+		} else {
+			if(taille_mot < taille_max_mot) {
+				mot[taille_mot] = tar[i];
+			}
+			++taille_mot;
+		}
+	}
+	return score;
 }
 
 /************************************************************
@@ -238,14 +274,14 @@ int text_score(byte** liste_mot, int nb_mot, bool* hash_dico){
  *          longueur lenkey pour le texte tar.              *
  *                                                          *
  ***********************************************************/
-int C3(int lenkey, int lentar, byte* tar){
+int C32(int lenkey, int lentar, byte *tar) {
   int nb;
   int nb_mot_cle = 0;
   int score = 0;
   int current_best_score = -1;
   byte* current_text;
   byte* current_best_key = NULL;
-  byte** liste_key = buildkey(lenkey, lentar, tar, &nb);
+	byte **liste_key = buildkey_opti(lenkey, lentar, tar, &nb);
   if (liste_key == NULL) return 0;
   bool* hashed_dico = hash_dico();
   byte** liste_mot;
@@ -253,10 +289,12 @@ int C3(int lenkey, int lentar, byte* tar){
     // Parcours toute les clé,
     current_text = xorciphercopy(lenkey, liste_key[i], lentar, tar);// Déchiffre le texte,
     liste_mot = parsing_prof(lentar, current_text, &nb_mot_cle);// Cherche les mots dans le texte déchiffré,
-    score = text_score(liste_mot, nb_mot_cle, hashed_dico);// Calcule le score du texte déchiffré.
-    if (score > current_best_score){
-      current_best_score = score;
-      current_best_key = liste_key[i];
+	  if(nb_mot_cle > current_best_score) {
+		  score = text_score(liste_mot, nb_mot_cle, hashed_dico);// Calcule le score du texte déchiffré.
+		  if(score > current_best_score) {
+			  current_best_score = score;
+			  current_best_key = liste_key[i];
+		  }
     }
     free(current_text);
     lib_double_pointeur(liste_mot, nb_mot_cle);
@@ -270,4 +308,35 @@ int C3(int lenkey, int lentar, byte* tar){
   lib_double_pointeur(liste_key, nb);
   free(hashed_dico);
   return 0;
+}
+
+int C3(int lenkey, int lentar, byte *tar) {
+	int nb;
+	int score = 0;
+	int current_best_score = -1;
+	byte *current_text;
+	byte *current_best_key = NULL;
+	byte **liste_key = buildkey_opti(lenkey, lentar, tar, &nb);
+	if(liste_key == NULL) return 0;
+	bool *hashed_dico = hash_dico();
+	for (int i = 0; i < nb; ++i) {
+		// Parcours toute les clé,
+		current_text = xorciphercopy(lenkey, liste_key[i], lentar, tar);// Déchiffre le texte,
+		score = parse_et_score(lentar, current_text, hashed_dico);// Cherche les mots dans le texte déchiffré,
+		//fprintf(stderr, "%d %s\n", score, liste_key[i]);
+		if(score > current_best_score) {
+			current_best_score = score;
+			current_best_key = liste_key[i];
+		}
+		free(current_text);
+	}
+	if(current_best_key != NULL) {
+		for (int j = 0; j < lenkey; ++j) {
+			printf("%c", current_best_key[j]);
+		}
+	}
+	printf("\n");
+	lib_double_pointeur(liste_key, nb);
+	free(hashed_dico);
+	return 0;
 }
