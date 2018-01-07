@@ -204,25 +204,28 @@ bool is_key_char_ok(const byte *tar, int lentar, byte key_char, int ind_key, int
  * lenkey   int   I   Longueur de clé recherché             *
  * lentar   int   I   Longueur du texte a déchiffrer        *
  * tar      byte* I   Texte qu'on cherche a déchiffrer      *
+ * nb_char	int*  O	  Nombre de caractère valide par indice *
  *                                                          *
  * RETURNS: Génère pour chaque indice de clé la liste des   *
  *          caractères qui donnerons une valeurs de         *
  *          caractère de message valide après déchiffrage   *
  *                                                          *
  ***********************************************************/
-byte **keygen(int lenkey, int lentar, byte *tar){
+byte **keygen(int lenkey, int lentar, byte *tar, int *nb_char){
 	byte **tab_key = (byte **) malloc(lenkey * sizeof(byte *));
-	int nb_char;
+	int current_nb_char = 0;
 	for (int i = 0; i < lenkey; i++) {
-		nb_char = 0;
+		current_nb_char = 0;
 		tab_key[i] = (byte *) malloc((lenkeyCharList + 1) * sizeof(byte));
 		for (int j = 0; j < lenkeyCharList; j++) {
 			if (is_key_char_ok(tar, lentar, keyCharlist[j], i, lenkey)) {
-				tab_key[i][nb_char] = keyCharlist[j];
-				++nb_char;
+				tab_key[i][current_nb_char++] = keyCharlist[j];
 			}
 		}
-		tab_key[i][nb_char] = (byte) '\0';
+		if (current_nb_char == 0) {
+			return NULL;
+		}
+		nb_char[i] = current_nb_char;
 	}
 	return tab_key;
 }
@@ -245,17 +248,15 @@ byte **keygen(int lenkey, int lentar, byte *tar){
  *                                                          *
  ***********************************************************/
 byte **buildkey(int lenkey, int lentar, byte *tar, int *nb){
-	byte **tab_key = keygen(lenkey, lentar, tar);
-	int nb_key = 1;
 	int nb_char[lenkey];
+	byte **tab_key = keygen(lenkey, lentar, tar, nb_char);
+	if (tab_key == NULL) {
+		return NULL;
+	}
+	int nb_key = 1;
 	int diviseur[lenkey];
 	for (int i = 0; i < lenkey; i++) {
-		// Calcule le nombre de caractère dans chaque liste.
-		nb_char[i] = 0;
-		for (int j = 0; tab_key[i][j] != '\0'; j++) {
-			++nb_char[i];
-		}
-		if (nb_char[i] == 0) return NULL;
+		// Calcule le nombre de clé.
 		nb_key *= nb_char[i];
 	}
 	for (int i = 0; i < lenkey; i++) {
@@ -279,17 +280,15 @@ byte **buildkey(int lenkey, int lentar, byte *tar, int *nb){
 }
 
 byte **buildkey_opti(int lenkey, int lentar, byte *tar, int *nb){
-	byte **tab_key = keygen(lenkey, lentar, tar);
-	int nb_key = 1;
 	int nb_char[lenkey];
+	byte **tab_key = keygen(lenkey, lentar, tar, nb_char);
+	if (tab_key == NULL) {
+		return NULL;
+	}
+	int nb_key = 1;
 	int diviseur[lenkey];
 	for (int i = 0; i < lenkey; i++) {
-		// Calcule le nombre de caractère dans chaque liste.
-		nb_char[i] = 0;
-		for (int j = 0; tab_key[i][j] != '\0'; j++) {
-			++nb_char[i];
-		}
-		if (nb_char[i] == 0) return NULL;
+		// Calcule le nombre de clé.
 		nb_key *= nb_char[i];
 	}
 	for (int i = 0; i < lenkey; i++) {
@@ -343,15 +342,14 @@ byte **buildkey_opti(int lenkey, int lentar, byte *tar, int *nb){
  *                                                          *
  ***********************************************************/
 int C1(int lenkey, int lentar, byte *tar){
-	byte **list_char = keygen(lenkey, lentar, tar);
-	for (int i = 0; i < lenkey; ++i) {
-		if (strlen((const char *) list_char[i]) == 0) {
-			return 1;
-		}
+	int nb_char[lenkey];
+	byte **list_char = keygen(lenkey, lentar, tar, nb_char);
+	if (list_char == NULL) {
+		return 1;
 	}
 	for (int i = 0; i < lenkey; ++i) {
 		printf("[");
-		for (int j = 0; list_char[i][j] != '\0'; ++j) {
+		for (int j = 0; j < nb_char[i]; ++j) {
 			printf("%c", list_char[i][j]);
 		}
 		printf("]");
