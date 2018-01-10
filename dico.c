@@ -90,6 +90,7 @@ unsigned long int hash_mot(byte *word){
  *                                                          *
  ***********************************************************/
 bool *hash_dico(){
+	// Dictionnaire pré-hashé et stocké dans dico.txt
 	unsigned long i;
 	FILE *dico = fopen("dico.txt",
 					   "r");// Fichier dans le répertoire depuis lequel on éxécute le programme, dictionnaire préalablement hashé
@@ -163,6 +164,7 @@ bool is_separator(const char c){
  *          mots qui se trouvent a l'intérieur.             *
  *                                                          *
  ***********************************************************/
+/*//Ancienne fonction de Parse pour C3
 byte **parsing_prof(int lentar, byte *tar, int *nb){
 	int taille_liste_mot = 20;
 	int ind_mot = 0;
@@ -204,7 +206,25 @@ byte **parsing_prof(int lentar, byte *tar, int *nb){
 	*nb = ind_mot;
 	return liste_mot;
 }
+*/
 
+/************************************************************
+ *                                                          *
+ * FUNCTION NAME: parsing_et_score                          *
+ *                                                          *
+ * ARGUMENTS:                                               *
+ *                                                          *
+ * ARGUMENT TYPE  I/O DESCRIPTION                           *
+ * ___________ _____ ___ _____________________________      *
+ * lentar      int   I   Longueur de la chaîne à parse      *
+ * tar         byte* I   Chaîne à parse                     *
+ * hashed_dico bool* I	 Dictionnaire hashé					*
+ *                                                          *
+ * RETURNS: Analyse la chaîne de caractère pour trouver les *
+ *          mots qui se trouvent a l'intérieur calcule au	*
+ *          passage le nombres de mots valide				*
+ *                                                          *
+ ***********************************************************/
 int parse_et_score(int lentar, byte *tar, bool *hashed_dico){
 	int score = 0;
 	int taille_mot = 0;
@@ -246,6 +266,7 @@ int parse_et_score(int lentar, byte *tar, bool *hashed_dico){
  *          dictionnaire.                                   *
  *                                                          *
  ***********************************************************/
+/*// Fonction utilisé dans la version précédente de C3
 int text_score(byte **liste_mot, int nb_mot, bool *hash_dico){
 	int score = 0;
 	for (int i = 0; i < nb_mot; ++i) {
@@ -255,7 +276,7 @@ int text_score(byte **liste_mot, int nb_mot, bool *hash_dico){
 	}
 	return score;
 }
-
+*/
 
 /************************************************************
  *                                                          *
@@ -275,7 +296,8 @@ int text_score(byte **liste_mot, int nb_mot, bool *hash_dico){
  *          longueur lenkey pour le texte tar.              *
  *                                                          *
  ***********************************************************/
-int C32(int lenkey, int lentar, byte *tar){
+/*
+int C3_ancienne_version(int lenkey, int lentar, byte *tar){
 	int nb;
 	int nb_mot_cle = 0;
 	int score = 0;
@@ -310,6 +332,7 @@ int C32(int lenkey, int lentar, byte *tar){
 	free(hashed_dico);
 	return 0;
 }
+ */
 
 int C3(int lenkey, int lentar, byte *tar){
 	int nb;

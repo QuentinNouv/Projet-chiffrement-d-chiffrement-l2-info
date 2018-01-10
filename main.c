@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <string.h>
+#include <time.h>
 
 #include "cipher.h"
 #include "valid.h"
@@ -239,5 +240,11 @@ int option(int argc, char **argv){
 
 
 int main(int argc, char **argv){
-	return option(argc, argv);
+	int retour;
+	clock_t start, end;
+	start = clock();
+	retour = option(argc, argv);
+	end = clock();
+	//fprintf(stderr, " Effectué en %f secondes.\n", (double)(end-start)/CLOCKS_PER_SEC);
+	return retour;
 }

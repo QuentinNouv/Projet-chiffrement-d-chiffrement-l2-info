@@ -86,11 +86,9 @@ int index_lettre(byte carac){
  *                                                          *
  ***********************************************************/
 float *calc_freq(byte *tar, int lentar){
-	int nb_lettre = 0;
 	float *freq = calloc(Nb_L_Alphabet + 1, sizeof(float));
 	for (int i = 0; i < lentar; ++i) {
 		freq[index_lettre(tar[i])] += 1;
-		++nb_lettre;
 	}
 	for (int j = 0; j < Nb_L_Alphabet; ++j) {
 		freq[j] /= lentar - freq[27];

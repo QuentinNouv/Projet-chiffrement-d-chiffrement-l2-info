@@ -279,6 +279,25 @@ byte **buildkey(int lenkey, int lentar, byte *tar, int *nb){
 	return key;
 }
 
+/************************************************************
+ *                                                          *
+ * FUNCTION NAME: buildkey                                  *
+ *                                                          *
+ * ARGUMENTS:                                               *
+ *                                                          *
+ * ARGUMENT TYPE  I/O DESCRIPTION                           *
+ * ________ _____ ___ ____________                          *
+ * lenkey   int   I   Longueur de clé recherché             *
+ * lentar   int   I   Longueur du texte a déchiffrer        *
+ * tar      byte* I   Texte qu'on cherche a déchiffrer      *
+ * nb       int*    O Nombre de clé généré                  *
+ *                                                          *
+ * RETURNS: Génère toutes les clé possible avec les liste   *
+ *          caractère généré par keygen, cette version est 	*
+ *          sans module/division mais la temps de cette		*
+ *          fonction est négligeable par rapport au reste.	*
+ *                                                          *
+ ***********************************************************/
 byte **buildkey_opti(int lenkey, int lentar, byte *tar, int *nb){
 	int nb_char[lenkey];
 	byte **tab_key = keygen(lenkey, lentar, tar, nb_char);
